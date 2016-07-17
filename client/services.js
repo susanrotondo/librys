@@ -108,7 +108,6 @@ angular.module('myApp').factory('AuthService',
         })
         // handle error
         .error(function (data) {
-          console.log('made it to register function in AuthService')
           deferred.reject()
         })
 

@@ -2,7 +2,8 @@ var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap']);
 
 myApp.config(function ($stateProvider, $urlRouterProvider) {
 
-  $urlRouterProvider.otherwise('/')
+  // TODO should I change to '/about' ?
+  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     // home will be where user can view own collections and initiate search for books
@@ -10,6 +11,10 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       url: '/',
       templateUrl: 'templates/home.html',
       restricted: true
+    })
+    .state('about', {
+      url: '/about',
+      templateUrl: 'templates/about.html'
     })
     .state('login', {
       url: '/login',
@@ -45,7 +50,7 @@ myApp.run(function ($rootScope, $location, $state, AuthService) {
       // if not logged in and route is auth-restricted, re-direct to login state
       if (toState.restricted && !AuthService.isLoggedIn()){
         // $location.path('/login')
-        $state.go('login');
+        $state.go('about');
       }
     })
   })
