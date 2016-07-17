@@ -1,6 +1,6 @@
-var myLibris = angular.module('myLibris', ['ui.router', 'ui.bootstrap'])
+var myApp = angular.module('myApp', ['ui.router', 'ui.bootstrap']);
 
-myLibris.config(function ($stateProvider, $urlRouterProvider) {
+myApp.config(function ($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise('/')
 
@@ -36,7 +36,7 @@ myLibris.config(function ($stateProvider, $urlRouterProvider) {
 })
 
 // FRONT END USER AUTHENTICATION MIDDLEWARE - CHECKS USER AUTH ON EVERY STATE CHANGE
-myLibris.run(function ($rootScope, $location, $state, AuthService) {
+myApp.run(function ($rootScope, $location, $state, AuthService) {
   $rootScope.$on("$stateChangeError", console.log.bind(console));
   $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
     // user logged in?

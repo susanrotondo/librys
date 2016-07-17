@@ -1,13 +1,26 @@
 <!DOCTYPE html>
-<html ng-app="myLibris">
+<html ng-app="myApp">
   <head>
     <meta charset="utf-8">
     <title>MyLibris App</title>
     <!-- ANGULAR -->
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-animate.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.js"></script>
+    <script type="text/javascript" src="./main.js"></script>
+    <script type="text/javascript" src="./services.js"></script>
+    <script type="text/javascript" src="./controllers.js"></script>
+    <!-- Source in angular-ui-bootstrap: -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
+    <!-- Angular UI Bootstrap requires Bootstrap CSS version 3.x or higher  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   </head>
   <body>
-    <h1>Home Page Placeholder Text</h1>
+    <div class="container" ng-controller="mainController as main">
+      <p ng-if="main.isLoggedIn()">
+        Logged in user: {{ main.currentUser.username }}
+      </p>
+      <div ui-view></div>
+    </div>
   </body>
 </html>

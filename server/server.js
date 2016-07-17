@@ -10,7 +10,10 @@ var
   mongoose = require('mongoose'),
   hash = require('bcrypt-nodejs'),
   path = require('path'),
-  passport = require('passport')
+  passport = require('passport'),
+  passportConfig = require('./config/passport.js'),
+  routes = require('./routes/api.js'),
+  User = require('./models/User.js')
 
 // conncect to MongoDB
 mongoose.connect('mongodb://localhost/my-libris', function(err) {
@@ -18,7 +21,7 @@ mongoose.connect('mongodb://localhost/my-libris', function(err) {
   console.log('Connected to MongoDB (my-libris)');
 });
 
-// Middleware:
+// MIDDLEWARE:
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -32,11 +35,30 @@ app.use(require('express-session')({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
 
-
+// ROUTES:
+app.use('/user/', routes);
+///////////
+// TODO:
+///////////
+// app.use('/books/', routes);
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
+});
+
+// ERROR HANDLERS:
+app.use(function(req, res, next) {
+  var err = new Error('Not Found')
+  err.status = 404
+  next(err)
+});
+
+app.use(function(err, req, res) {
+  res.status(err.status || 500)
+  res.end(JSON.stringify({
+    message: err.message,
+    error: {}
+  }))
 });
 
 app.listen(port, function() {
