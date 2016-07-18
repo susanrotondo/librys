@@ -7,18 +7,14 @@ var
   userSchema = new Schema({
     username: String,
     password: String,
-    email: {type: String, min: [6, 'Too few characters']}
-    // username: {type: String, required: true},
-    // password: {type: String, required: true, min: [6, 'Too few characters']}
-    // email: {type: String, required: true}
-    // TODO figure out how the collections will work
-    // collections: [
-      // haveRead: [{type: Schema.Types.ObjectId, ref: 'Book'}],
+    email: {type: String, required: true},
+    collections: [{
+      haveRead: [{type: Schema.Types.ObjectId, ref: 'Book'}],
       // TODO favorites will be populated from haveRead:
-      // favorites: [],
-      // TODO wants cannot be rated
-      // want: [{type: Schema.Types.ObjectId, ref: 'Book'}]
-    // ]
+      favorites: [],
+      // TODO want items cannot be rated
+      want: [{type: Schema.Types.ObjectId, ref: 'Book'}]
+    }]
   });
 
 // extend functionality of Schema using third party pkg:
