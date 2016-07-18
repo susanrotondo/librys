@@ -24,3 +24,25 @@ body {
   -o-background-size: cover;
   background-size: cover;
 }
+
+#root-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+
+.jumbotron {
+  position: absolute;
+  background-color: white;
+  opacity: 0.9;
+  height: 40%;
+  width: 50%;
+  top: 20%;
+  left: 25%;
+  text-align: center;
+}
+
+.root-btn {
+  background-color: #c6bbb4;
+  margin: 20px;
+}
