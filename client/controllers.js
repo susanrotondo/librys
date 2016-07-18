@@ -47,7 +47,8 @@ function loginController($state, AuthService) {
       // handle success
       .then(function () {
         console.log("Successful login...")
-        $state.go('profile')
+        // on successful log in, load home view
+        $state.go('home')
         vm.disabled = false
         vm.loginForm = {}
       })

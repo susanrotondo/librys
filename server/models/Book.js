@@ -4,6 +4,7 @@ var
   bookSchema = new Schema({
     // use volume id to GET book from Google Books api
     volume_id: {type: String, required: true},
+    previewUrl: {type: String, required: true},
     is_favorite: Boolean,
     rating: Number
   });

@@ -1,4 +1,4 @@
-![](client/images/sm_open_book_icon.png)
+<img src="client/images/sm_open_book_icon.png" style="width: 200px;"/>
 
 # librys
 A handy reading app.

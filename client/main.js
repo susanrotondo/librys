@@ -46,9 +46,9 @@ myApp.run(function ($rootScope, $location, $state, AuthService) {
     // user logged in?
     AuthService.getUserStatus()
     .then(function(){
-      // if not logged in and route is auth-restricted, re-direct to login state
+      // if not logged in and route is auth-restricted, re-direct to root/index state
       if (toState.restricted && !AuthService.isLoggedIn()){
-        // $location.path('/login')
+        // $location.path('/')
         $state.go('/');
       }
     })

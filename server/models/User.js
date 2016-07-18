@@ -7,7 +7,7 @@ var
   userSchema = new Schema({
     username: String,
     password: String,
-    email: {type: String, required: true},
+    email: String,
     collections: [{
       haveRead: [{type: Schema.Types.ObjectId, ref: 'Book'}],
       // TODO favorites will be populated from haveRead:

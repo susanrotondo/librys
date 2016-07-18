@@ -1,3 +1,6 @@
+/* ----------------------- */
+/* APP-WIDE VIEWS STYLING: */
+/* ----------------------- */
 body {
   /*platinum grey*/
   background-color: #e0e0e0;
@@ -5,6 +8,9 @@ body {
   color: #090e0e;
 }
 
+/* ----------------------- */
+/* ROOT/INDEX VIEW:        */
+/* ----------------------- */
 #background {
   background-image: url("../images/background_pattern.png");
   position: fixed;
