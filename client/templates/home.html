@@ -2,16 +2,19 @@
   <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
 </div>
 
+<div id="books-controller"  ng-controller="booksController as bc">
+  <form class="form-inline" id ="search-form" method="GET" ng-submit="bc.findBook(titleSearch, authorSearch)">
+    <!-- <p>{{ bc.title }}</p> -->
+    <h4>Search for Books by Title and/or Author:</h4>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" class="form-control" placeholder="i.e., Great Expectations" ng-model="titleSearch">
+    </div>
+    <div class="form-group">
+      <label for="author">Author</label>
+      <input type="text" class="form-control" placeholder="i.e., Charles Dickens" ng-model="authorSearch">
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
 
-<form class="form-inline" id ="search-form" method="GET">
-  <h4>Search for Books by Title and/or Author:</h4>
-  <div class="form-group">
-    <label for="title">Title</label>
-    <input type="text" class="form-control" id="title" placeholder="i.e., Great Expectations">
-  </div>
-  <div class="form-group">
-    <label for="author">Author</label>
-    <input type="email" class="form-control" id="author" placeholder="i.e., Charles Dickens">
-  </div>
-  <button type="submit" class="btn btn-primary">Search</button>
-</form>
+</div>  <!-- END id="books-controller"  ng-controller="booksController as bc" -->

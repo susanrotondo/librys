@@ -1,7 +1,3 @@
-//////////////////////////////////////////////////////////////////////////////////////////////
-// NOTE: may want to separate out users routes from collections routes once functional/stable
-/////////////////////////////////////////////////////////////////////////////////////////////
-
 var
   express = require('express'),
   router = express.Router(),
@@ -65,7 +61,6 @@ router.get('/status', function(req, res) {
   })
 });
 
-// TODO Collections routes:
 
 
-module.exports = router
+module.exports = router;

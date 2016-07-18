@@ -4,6 +4,7 @@ angular.module('myApp')
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
   .controller('usersController', usersController)
+  .controller('booksController', booksController)
 
   /////////////////////////////////////////////
   // NOTE 'AuthService' defined in services.js
@@ -13,10 +14,52 @@ angular.module('myApp')
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
+  booksController.$inject = ['$http']
 
+/////////////////////////////////////////////////
+// NOTE currently not being used for anything:
+/////////////////////////////////////////////////
 function usersController() {
   var vm = this;
   vm.title = "The Users Controller"
+}
+/////////////////////////////////////////////////
+
+function booksController($http) {
+  console.log('Instantiated books controller');
+  var vm = this;
+  vm.title = "books controller"
+
+  vm.searchReturn = [];
+
+  vm.findBook = function(title, author) {
+    $http({
+      method: 'GET',
+      url: 'https://www.googleapis.com/books/v1/volumes?q=' + title + '+inauthor:' + author + '&key=AIzaSyAW-cYjhZ7Z_bR8AblZsJKS3DrC_tstxWQ'
+      }).then(function successCallback(response) {
+        console.log(response.data.items);
+        vm.searchReturn = response.data.items;
+      }, function errorCallback(error) {
+        console.log(error);
+    });
+  }
+
+
+  // vm.addBook = function (bookName, bookAuthor, bookCategory, bookPages) {
+  //   $http.post('/api/books', {name: bookName, author: bookAuthor, category: bookCategory, page_count:bookPages})
+  //   .success(function (response) {
+  //     console.log(response);
+  //     vm.booksList.push (response.book)
+  //   })
+  //     vm.bookName = ""
+  // }
+  // vm.deleteBook = function (id, index) {
+  //   $http.delete('/api/books/' + id)
+  //     .success(function (response) {
+  //       console.log(response);
+  //       vm.booksList.splice(index, 1)
+  //   })
+  // }
 
 }
 

@@ -13,6 +13,7 @@ var
   passport = require('passport'),
   passportConfig = require('./config/passport.js'),
   routes = require('./routes/api.js'),
+  // bookRoutes = require('./routes/books.js'),
   User = require('./models/User.js')
 
 // conncect to MongoDB
@@ -36,12 +37,13 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// NOTE what is this/necessary?
+// app.set('view engine', 'html');
+
 // ROUTES:
 app.use('/user/', routes);
-///////////
-// TODO:
-///////////
-// app.use('/books/', routes);
+// app.use('/api/books', bookRoutes);
+
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, '../client', 'index.html'));
 });
