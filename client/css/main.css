@@ -60,3 +60,18 @@ body {
 .book-front {
   height: 60px;
 }
+
+#search-results {
+  margin-top: 8px;
+  border: 1px solid #c6bbb4;
+  height: 200px;
+  width: 100%;
+  overflow: scroll;
+}
+
+/* ----------------------- */
+/* HELPER STYLING:         */
+/* ----------------------- */
+.sm-padding {
+  padding: 8px;
+}

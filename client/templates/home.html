@@ -13,7 +13,7 @@
 <div id="books-controller"  ng-controller="booksController as bc">
   <form class="form-inline" id ="search-form" method="GET" ng-submit="bc.findBook(titleSearch, authorSearch)">
     <!-- <p>{{ bc.title }}</p> -->
-    <h4>Search for Books by Title and/or Author:</h4>
+    <h4>Search for Books To Add to Your Collections:</h4>
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" class="form-control" placeholder="i.e., Great Expectations" ng-model="titleSearch">
@@ -25,25 +25,22 @@
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
-  <table class="bordered highlight centered">
-  <thead>
-    <tr>
-      <!-- <th data-field="pic">Book Front</th>
-      <th data-field="title">Title</th>
-      <th data-field="author">Author</th>
-      <th data-field="#"></th> -->
-    </tr>
-  </thead>
+  <div id="search-results" class="container">
+    <table class="bordered highlight centered">
+    <thead>
+      <tr></tr>
+    </thead>
+    <tbody>
+      <tr class="collection-items" ng-repeat="book in bc.books">
+        <td class="sm-padding"><img class="book-front" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="front cover" /></td>
+        <td>{{ book.volumeInfo.title | limitTo: 80 }}</td>
+        <td>{{ book.volumeInfo.authors[0] }}</td>
+        <td>
+            <!-- <a ui-sref="book" class="btn btn-default">View Book</a> -->
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
 
-  <tbody>
-    <tr class="collection-items" ng-repeat="book in bc.books">
-      <td><img class="book-front" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="front cover" /></td>
-      <td>{{ book.volumeInfo.title }}</td>
-      <td>{{ book.volumeInfo.authors[0] }}</td>
-      <td>
-          <!-- <a ui-sref="book" class="btn btn-default">View Book</a> -->
-      </td>
-    </tr>
-  </tbody>
-</table>
 </div><!-- CLOSES id="books-controller"  ng-controller="booksController as bc" -->
