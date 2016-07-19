@@ -56,3 +56,7 @@ body {
 .books-list-items {
   list-style-type: none;
 }
+
+.book-front {
+  height: 60px;
+}

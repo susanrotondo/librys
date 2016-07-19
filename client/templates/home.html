@@ -28,14 +28,16 @@
   <table class="bordered highlight centered">
   <thead>
     <tr>
+      <!-- <th data-field="pic">Book Front</th>
       <th data-field="title">Title</th>
       <th data-field="author">Author</th>
-      <th data-field="#"></th>
+      <th data-field="#"></th> -->
     </tr>
   </thead>
 
   <tbody>
     <tr class="collection-items" ng-repeat="book in bc.books">
+      <td><img class="book-front" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="front cover" /></td>
       <td>{{ book.volumeInfo.title }}</td>
       <td>{{ book.volumeInfo.authors[0] }}</td>
       <td>
