@@ -66,6 +66,7 @@ function booksController($http) {
 // mainController listens for state changes; on change, get user status
 function mainController($rootScope, $state, AuthService) {
   var vm = this;
+  vm.title = 'mainController'
   $rootScope.$on('$stateChangeStart', function (event) {
     // console.log("Changing states")
     AuthService.getUserStatus()

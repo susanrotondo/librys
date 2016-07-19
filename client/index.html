@@ -19,9 +19,6 @@
   </head>
   <body>
     <div class="container" ng-controller="mainController as main">
-      <p ng-if="main.isLoggedIn()">
-        Logged in user: {{ main.currentUser.username }}
-      </p>
       <div ui-view></div>
     </div>
   </body>

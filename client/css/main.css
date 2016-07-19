@@ -6,6 +6,8 @@ body {
   background-color: #e0e0e0;
   /*smoky black*/
   color: #090e0e;
+  /*because of fixed nav-bar:*/
+  padding-top: 70px;
 }
 
 /* ----------------------- */

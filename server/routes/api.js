@@ -51,10 +51,12 @@ router.get('/logout', function(req, res) {
 
 router.get('/status', function(req, res) {
   if (!req.isAuthenticated()) {
+    console.log('router.get status res status is false');
     return res.status(200).json({
       status: false
     })
   }
+  console.log('router.get status is true')
   res.status(200).json({
     status: true,
     user: req.user

@@ -1,7 +1,4 @@
-<div ng-controller="logoutController as logoutCtrl">
-  <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
-</div>
-
+<p>Logged in user: {{ main.currentUser.username }}</p>
 <div id="books-controller"  ng-controller="booksController as bc">
   <form class="form-inline" id ="search-form" method="GET" ng-submit="bc.findBook(titleSearch, authorSearch)">
     <!-- <p>{{ bc.title }}</p> -->
@@ -17,4 +14,4 @@
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
-</div>  <!-- END id="books-controller"  ng-controller="booksController as bc" -->
+</div><!-- CLOSES id="books-controller"  ng-controller="booksController as bc" -->
