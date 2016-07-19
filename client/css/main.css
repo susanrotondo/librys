@@ -37,11 +37,12 @@ body {
   position: absolute;
   background-color: white;
   opacity: 0.9;
-  height: 40%;
+  min-height: 40% | 160px;
   width: 50%;
   top: 20%;
   left: 25%;
   text-align: center;
+  margin: 0 auto;
 }
 
 .root-btn {

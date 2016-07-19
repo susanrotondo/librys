@@ -4,7 +4,6 @@ angular.module('myApp')
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
   .controller('usersController', usersController)
-  // .controller('booksController', booksController)
 
   /////////////////////////////////////////////
   // NOTE 'AuthService' defined in services.js
@@ -14,11 +13,10 @@ angular.module('myApp')
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
-  // booksController.$inject = ['$http']
 
-/////////////////////////////////////////////////
-// NOTE currently not being used for anything:
-/////////////////////////////////////////////////
+//////////////////////
+// USERS CONTROLLER
+//////////////////////
 function usersController($http) {
   console.log('Instantiated usersController');
   var vm = this;
@@ -39,54 +37,23 @@ function usersController($http) {
   }
 
   vm.createBook = function(book) {
-    console.log('saving book to haveRead:', book)
+    console.log('creating book:', book)
     $http.post('/user/books', {book: book})
     // data will be user obj with all their books
     .success(function(data) {
       console.log(data)
     })
   }
-/////////////////////////////////////////////////
-
-// function booksController($http) {
-//   console.log('Instantiated books controller');
-//   var vm = this;
-//   vm.title = "books controller"
-//
-//   vm.books = [];
-//
-//   vm.findBook = function(title, author) {
-//     $http({
-//       method: 'GET',
-//       url: 'https://www.googleapis.com/books/v1/volumes?q=' + title + '+inauthor:' + author + '&key=AIzaSyAW-cYjhZ7Z_bR8AblZsJKS3DrC_tstxWQ'
-//       }).then(function successCallback(response) {
-//         vm.books = response.data.items;
-//         console.log(vm.books);
-//       }, function errorCallback(error) {
-//         console.log(error);
-//     });
-//   }
-
-
-  // vm.addBook = function (bookName, bookAuthor, bookCategory, bookPages) {
-  //   $http.post('/api/books', {name: bookName, author: bookAuthor, category: bookCategory, page_count:bookPages})
-  //   .success(function (response) {
-  //     console.log(response);
-  //     vm.booksList.push (response.book)
-  //   })
-  //     vm.bookName = ""
-  // }
-  // vm.deleteBook = function (id, index) {
-  //   $http.delete('/api/books/' + id)
-  //     .success(function (response) {
-  //       console.log(response);
-  //       vm.booksList.splice(index, 1)
-  //   })
-  // }
-
 }
+  ////////////////////////
+  // END USERS CONTROLLER
+  ////////////////////////
 
-// mainController listens for state changes; on change, get user status
+
+/////////////////////////////////////////////////////////////
+// MAIN CONTROLLER
+// listens for all state changes; on change, gets user status
+/////////////////////////////////////////////////////////////
 function mainController($rootScope, $state, AuthService) {
   var vm = this;
   vm.title = 'mainController'
@@ -99,6 +66,9 @@ function mainController($rootScope, $state, AuthService) {
       })
   })
 }
+/////////////////////////////////////////////////////////////
+// END MAIN CONTROLLER
+/////////////////////////////////////////////////////////////
 
 // LOGIN CONTROLLER:
 function loginController($state, AuthService) {
