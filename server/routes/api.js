@@ -81,16 +81,16 @@ router.post('/books', function(req, res) {
       if(err) return console.log(err);
       user.haveRead.push(book);
       // console.log(user);
-      User.findById(user._id).populate('haveRead', 'volume_id smThumbnailUrl title authors is_favorite rating -_id').exec(function(err, user) {
-        if(err) return console.log(err);
-        user.save(function(err, user) {
-           if(err) return console.log(err);
-           res.json(user);
-        })
+      user.save(function(err, user) {
+         if(err) return console.log(err);
+         res.json(user);
       })
     })
   })
 });
 
+// User.findById(user._id).populate('haveRead', 'volume_id smThumbnailUrl title authors is_favorite rating -_id').exec(function(err, user) {
+//   if(err) return console.log(err);
+// })
 
 module.exports = router;
