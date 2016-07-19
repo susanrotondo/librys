@@ -7,7 +7,7 @@ body {
   /*smoky black*/
   color: #090e0e;
   /*because of fixed nav-bar:*/
-  padding-top: 70px;
+  /*padding-top: 70px;*/
 }
 
 /* ----------------------- */
@@ -47,4 +47,12 @@ body {
 .root-btn {
   background-color: #c6bbb4;
   margin: 20px;
+}
+
+#fake-navbar h3, #fake-navbar div {
+  display: inline-block;
+}
+
+.books-list-items {
+  list-style-type: none;
 }

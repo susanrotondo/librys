@@ -1,4 +1,15 @@
-<p>Logged in user: {{ main.currentUser.username }}</p>
+<!-- ***************** -->
+<!-- TODO: remove to nav partial: -->
+<!-- ***************** -->
+<div ng-if="main.currentUser.username" id="fake-navbar">
+  <img src="../../images/xsm_open_book.png"/>
+  <h3>Welcome, {{ main.currentUser.username }}</h3>
+  <div ng-controller="logoutController as logoutCtrl">
+    <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
+  </div>
+</div>
+<!-- ***************** -->
+
 <div id="books-controller"  ng-controller="booksController as bc">
   <form class="form-inline" id ="search-form" method="GET" ng-submit="bc.findBook(titleSearch, authorSearch)">
     <!-- <p>{{ bc.title }}</p> -->
@@ -14,4 +25,23 @@
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
 
+  <table class="bordered highlight centered">
+  <thead>
+    <tr>
+      <th data-field="title">Title</th>
+      <th data-field="author">Author</th>
+      <th data-field="#"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr class="collection-items" ng-repeat="book in bc.books">
+      <td>{{ book.volumeInfo.title }}</td>
+      <td>{{ book.volumeInfo.authors[0] }}</td>
+      <td>
+          <!-- <a ui-sref="book" class="btn btn-default">View Book</a> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div><!-- CLOSES id="books-controller"  ng-controller="booksController as bc" -->

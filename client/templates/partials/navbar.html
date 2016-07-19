@@ -1,8 +1,8 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <img id="nav-icon" src="../../images/sm_open_book_icon.png" alt="book icon"/>
-    <div ng-if="main.isLoggedIn()">
-      <p>Logged in user: {{ main.currentUser.username }}</p>
+    <img id="nav-icon" src="../../images/xsm_open_book.png" alt="book icon"/>
+    <div ng-if="main.currentUser.username">
+      <h3>Welcome, {{ main.currentUser.username }}</h3>
       <div ng-controller="logoutController as logoutCtrl">
         <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
       </div>

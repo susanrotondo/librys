@@ -30,15 +30,15 @@ function booksController($http) {
   var vm = this;
   vm.title = "books controller"
 
-  vm.searchReturn = [];
+  vm.books = [];
 
   vm.findBook = function(title, author) {
     $http({
       method: 'GET',
       url: 'https://www.googleapis.com/books/v1/volumes?q=' + title + '+inauthor:' + author + '&key=AIzaSyAW-cYjhZ7Z_bR8AblZsJKS3DrC_tstxWQ'
       }).then(function successCallback(response) {
-        console.log(response.data.items);
-        vm.searchReturn = response.data.items;
+        vm.books = response.data.items;
+        console.log(vm.books);
       }, function errorCallback(error) {
         console.log(error);
     });

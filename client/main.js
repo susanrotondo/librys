@@ -15,6 +15,12 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/home.html',
       restricted: true
     })
+    // .state('book', {
+    //   url: '/books/:id',
+    //   templateUrl: 'templates/profile.html',
+    //   restricted: true,
+    //   controller: 'booksController as bc'
+    // })
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
