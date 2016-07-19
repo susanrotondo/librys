@@ -9,10 +9,11 @@ var
     // GB api books object, title found: .volumeInfo.title
     // TODO set max title string length here?
     title: {type: String, required: true},
-    // GB api books object, title found: .volumeInfo.authors    
+    // GB api books object, title found: .volumeInfo.authors
     authors: {type: Array, required: true},
     is_favorite: Boolean,
-    rating: Number
+    rating: Number,
+    _by: {type: Schema.Types.ObjectId, ref: 'User'}
   });
 
 var Book = mongoose.model('Book', bookSchema);

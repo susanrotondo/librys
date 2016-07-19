@@ -13,14 +13,9 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     .state('home', {
       url: '/home',
       templateUrl: 'templates/home.html',
-      restricted: true
+      restricted: true,
+      controller: 'usersController as uc'
     })
-    // .state('book', {
-    //   url: '/books/:id',
-    //   templateUrl: 'templates/profile.html',
-    //   restricted: true,
-    //   controller: 'booksController as bc'
-    // })
     .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
@@ -40,7 +35,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
       url: '/profile',
       templateUrl: 'templates/profile.html',
       restricted: true,
-      controller: 'usersController as usersCtrl'
+      controller: 'usersController as uc'
     })
 
 })

@@ -1,19 +1,6 @@
-<!-- ***************** -->
-<!-- TODO: remove to nav partial: -->
-<!-- ***************** -->
-<div ng-if="main.currentUser.username" id="fake-navbar">
-  <img src="../../images/xsm_open_book.png"/>
-  <h3>Welcome, {{ main.currentUser.username }}</h3>
-  <div ng-controller="logoutController as logoutCtrl">
-    <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
-  </div>
-</div>
-<!-- ***************** -->
-
-<!-- <a ui-sref="books" class="btn btn-default">Search for Books</a> -->
-
-<div id="books-controller"  class="container">
-  <form class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(titleSearch, authorSearch)">
+<div id="books-controller"  ng-controller="booksController as bc">
+  <form class="form-inline" id ="search-form" method="GET" ng-submit="bc.findBook(titleSearch, authorSearch)">
+    <!-- <p>{{ bc.title }}</p> -->
     <h4>Search for Books To Add to Your Collections:</h4>
     <div class="form-group">
       <label for="title">Title</label>
@@ -32,15 +19,22 @@
       <tr></tr>
     </thead>
     <tbody>
-      <tr class="collection-items" ng-repeat="book in uc.books">
+      <tr class="collection-items" ng-repeat="book in bc.books">
         <td class="sm-padding"><img class="book-front" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="front cover" /></td>
         <td>{{ book.volumeInfo.title | limitTo: 80 }}</td>
         <td>{{ book.volumeInfo.authors[0] }}</td>
         <td>
-            <a ng-click='uc.createBook(book)' class="btn btn-default">Add to Have Read</a>
+            <!-- <a ui-sref="book" class="btn btn-default">View Book</a> -->
         </td>
       </tr>
     </tbody>
   </table>
   </div>
-</div>
+
+  <div id="book-details">
+    <div ng-controller="logoutController as logoutCtrl">
+      <a ng-click='logoutCtrl.createBook()' class="btn btn-default">Add to Have Read</a>
+    </div>
+  </div>
+
+</div><!-- CLOSES id="books-controller"  ng-controller="booksController as bc" -->

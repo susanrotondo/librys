@@ -8,13 +8,11 @@ var
     username: String,
     password: String,
     email: String,
-    collections: [{
-      haveRead: [{type: Schema.Types.ObjectId, ref: 'Book'}],
-      // TODO favorites will be populated from haveRead:
-      favorites: [],
-      // TODO want items cannot be rated
-      want: [{type: Schema.Types.ObjectId, ref: 'Book'}]
-    }]
+    haveRead: [{type: Schema.Types.ObjectId, ref: 'Book'}],
+    // TODO favorites will be populated from haveRead:
+    favorites: [],
+    // TODO want items cannot be rated
+    want: [{type: Schema.Types.ObjectId, ref: 'Book'}]
   });
 
 // extend functionality of Schema using third party pkg:

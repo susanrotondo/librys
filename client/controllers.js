@@ -4,7 +4,7 @@ angular.module('myApp')
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
   .controller('usersController', usersController)
-  .controller('booksController', booksController)
+  // .controller('booksController', booksController)
 
   /////////////////////////////////////////////
   // NOTE 'AuthService' defined in services.js
@@ -14,21 +14,15 @@ angular.module('myApp')
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
   registerController.$inject = ['$state', 'AuthService']
-  booksController.$inject = ['$http']
+  // booksController.$inject = ['$http']
 
 /////////////////////////////////////////////////
 // NOTE currently not being used for anything:
 /////////////////////////////////////////////////
-function usersController() {
+function usersController($http) {
+  console.log('Instantiated usersController');
   var vm = this;
   vm.title = "The Users Controller"
-}
-/////////////////////////////////////////////////
-
-function booksController($http) {
-  console.log('Instantiated books controller');
-  var vm = this;
-  vm.title = "books controller"
 
   vm.books = [];
 
@@ -43,6 +37,35 @@ function booksController($http) {
         console.log(error);
     });
   }
+
+  vm.createBook = function(book) {
+    console.log('saving book to haveRead:', book)
+    $http.post('/user/books', {book: book})
+    // data will be user obj with all their books
+    .success(function(data) {
+      console.log(data)
+    })
+  }
+/////////////////////////////////////////////////
+
+// function booksController($http) {
+//   console.log('Instantiated books controller');
+//   var vm = this;
+//   vm.title = "books controller"
+//
+//   vm.books = [];
+//
+//   vm.findBook = function(title, author) {
+//     $http({
+//       method: 'GET',
+//       url: 'https://www.googleapis.com/books/v1/volumes?q=' + title + '+inauthor:' + author + '&key=AIzaSyAW-cYjhZ7Z_bR8AblZsJKS3DrC_tstxWQ'
+//       }).then(function successCallback(response) {
+//         vm.books = response.data.items;
+//         console.log(vm.books);
+//       }, function errorCallback(error) {
+//         console.log(error);
+//     });
+//   }
 
 
   // vm.addBook = function (bookName, bookAuthor, bookCategory, bookPages) {
