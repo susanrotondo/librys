@@ -3,16 +3,28 @@ var
   mongoose = require('mongoose'),
   Schema = mongoose.Schema,
   passportLocalMongoose = require('passport-local-mongoose'),
+  bookSchema = new Schema({
+    // GB api books object, volume_id found: .accessInfo.id
+    volume_id: {type: String, required: true},
+    // GB api books object, smThumbnailUrl found: .volumeInfo.imageLinks.smallThumbnail
+    smThumbnailUrl: {type: String, required: true},
+    // GB api books object, title found: .volumeInfo.title
+    title: {type: String, required: true},
+    // GB api books object, title found: .volumeInfo.authors
+    authors: {type: Array, required: true},
+    is_favorite: Boolean,
+    rating: Number
+  }),
 
   userSchema = new Schema({
     username: String,
     password: String,
     email: String,
-    haveRead: [{type: Schema.Types.ObjectId, ref: 'Book'}],
+    haveRead: [bookSchema],
     // TODO favorites will be populated from haveRead:
     favorites: [],
     // TODO want items cannot be rated
-    want: [{type: Schema.Types.ObjectId, ref: 'Book'}]
+    want: [bookSchema]
   });
 
 // extend functionality of Schema using third party pkg:
