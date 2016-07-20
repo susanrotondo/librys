@@ -64,6 +64,15 @@ router.get('/status', function(req, res) {
   })
 });
 
+router.patch('/:id', function(req, res) {
+  User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+    console.log(user)
+    if(req.body.rating) user.haveRead.rating = req.body.rating;
+  })
+  res.json(req.body)
+
+})
+
 ////////////////////////////////////////////////
 //         USER COLLECTIONS ROUTES
 ////////////////////////////////////////////////
@@ -73,6 +82,23 @@ router.get('/books', function(req, res) {
     if(err) return console.log(err);
     // console.log('user.haveRead:', user.haveRead);
     res.json(user.haveRead);
+  })
+})
+
+
+
+router.delete('/books/:id', function(req, res) {
+  console.log('req.user._id', req.user._id);
+  console.log('req.params.id', req.params.id);
+  User.findById(req.user._id, function(err, user) {
+    if(err) return console.log(err);
+    // user.haveRead.splice(user.haveRead.indexOf(), 1);
+    // console.log(user);
+
+    user.save(function(err, user) {
+       if(err) return console.log(err);
+       res.json(user);
+    })
   })
 })
 

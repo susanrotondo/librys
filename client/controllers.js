@@ -49,9 +49,17 @@ function usersController($http) {
   }
 
   vm.addBook = function(book) {
-    console.log('creating book:', book)
+    // console.log('creating book:', book)
     $http.post('/user/add-book', {book: book})
     // data will be user obj with all their books
+    .success(function(data) {
+      console.log('data is:', data)
+    })
+  }
+
+  vm.removeBook = function(book) {
+    console.log('deleting book:', book);
+    $http.delete('/user/books/' + book._id, {params: {book: book}})
     .success(function(data) {
       console.log('data is:', data)
     })
