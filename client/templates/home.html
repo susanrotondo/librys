@@ -9,24 +9,29 @@
   </div>
 </div>
 <!-- ***************** -->
+<div class="container">
+    <h4>My Bookshelf:</h4>
+</div>
 
-<div id="have-read-display" class="container">
-  <h4>My Bookshelf:</h4>
+<div id="have-read-display" class="container books-display">
   <table class="bordered highlight centered" ng-init="uc.getBooks()">
   <tbody>
-    <tr class="collection-items" ng-repeat="book in uc.haveRead">
-      <td class="sm-padding">
-        <img class="book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
-        {{ book.title | limitTo: 20 }}
+    <!-- <tr class="collection-items" ng-repeat="book in uc.haveRead"> -->
+    <tr class="collection-items">
+      <td class="sm-padding" ng-repeat="book in uc.haveRead">
+        <div class="hr-books">
+          <img class="hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
+          {{ book.title | limitTo: 20 }}
+        </div>
       </td>
     </tr>
   </tbody>
 </table>
 </div>
 
-<div id="books-controller"  class="container">
+<div class="container">
   <form class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(titleSearch, authorSearch)">
-    <h4>Search for Books To Add to Your Collections:</h4>
+    <h4>Search for Books To Add to Your Bookshelf:</h4>
     <div class="form-group">
       <label for="title">Title</label>
       <input type="text" class="form-control" placeholder="i.e., Great Expectations" ng-model="titleSearch">
@@ -37,22 +42,22 @@
     </div>
     <button type="submit" class="btn btn-primary">Search</button>
   </form>
+</div>
 
-  <div id="search-results" class="container">
-    <table class="bordered highlight centered">
-    <thead>
-      <tr></tr>
-    </thead>
-    <tbody>
-      <tr class="collection-items" ng-repeat="book in uc.books">
-        <td class="sm-padding"><img class="book-front" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="front cover" /></td>
-        <td>{{ book.volumeInfo.title | limitTo: 80 }}</td>
-        <td>{{ book.volumeInfo.authors[0] }}</td>
-        <td>
-            <a ng-click='uc.addBook(book)' class="btn btn-default">Add to Have Read</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  </div>
+<div class="container books-display">
+  <table class="bordered highlight centered">
+  <thead>
+    <tr></tr>
+  </thead>
+  <tbody>
+    <tr class="collection-items" ng-repeat="book in uc.books">
+      <td class="sm-padding"><img class="book-front" ng-src="{{book.volumeInfo.imageLinks.smallThumbnail}}" alt="front cover" /></td>
+      <td>{{ book.volumeInfo.title | limitTo: 80 }}</td>
+      <td>{{ book.volumeInfo.authors[0] }}</td>
+      <td>
+          <a ng-click='uc.addBook(book)' class="btn btn-default">Add to Have Read</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
 </div>

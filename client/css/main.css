@@ -62,12 +62,21 @@ body {
   height: 60px;
 }
 
-#search-results {
+.books-display {
   margin-top: 8px;
   border: 1px solid #c6bbb4;
   height: 200px;
   width: 100%;
   overflow: scroll;
+}
+
+.hr-book-front {
+  height: 100px;
+}
+
+.hr-books {
+  max-width: 80px;
+  height: 180px;
 }
 
 /* ----------------------- */
