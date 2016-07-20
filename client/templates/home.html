@@ -16,12 +16,20 @@
 <div id="have-read-display" class="container books-display">
   <table class="bordered highlight centered" ng-init="uc.getBooks()">
   <tbody>
-    <!-- <tr class="collection-items" ng-repeat="book in uc.haveRead"> -->
     <tr class="collection-items">
       <td class="sm-padding" ng-repeat="book in uc.haveRead">
         <div class="hr-books">
           <img class="hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
-          {{ book.title | limitTo: 20 }}
+          <div class="hr-books-title">
+            <p>{{ book.title | limitTo: 28 }}</p>
+          </div>
+          <ul class="rating">
+            <li>&#9733;</li>
+            <li>&#9733;</li>
+            <li>&#9733;</li>
+            <li>&#9733;</li>
+            <li>&#9733;</li>
+          </ul>
         </div>
       </td>
     </tr>
