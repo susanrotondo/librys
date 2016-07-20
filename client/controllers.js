@@ -54,8 +54,6 @@ function usersController($http) {
     // data will be user obj with all their books
     .success(function(data) {
       console.log('data is:', data)
-      // vm.haveRead = data.haveRead;
-      // console.log('vm.haveRead is:', vm.haveRead);
     })
   }
 }

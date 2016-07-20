@@ -64,10 +64,14 @@ router.get('/status', function(req, res) {
   })
 });
 
+////////////////////////////////////////////////
+//         USER COLLECTIONS ROUTES
+////////////////////////////////////////////////
+
 router.get('/books', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
-    console.log('user.haveRead:', user.haveRead);
+    // console.log('user.haveRead:', user.haveRead);
     res.json(user.haveRead);
   })
 })
