@@ -30,6 +30,7 @@
             <li>&#9733;</li>
             <li>&#9733;</li>
           </ul>
+          <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
         </div>
       </td>
     </tr>
@@ -48,7 +49,7 @@
       <label for="author">Author</label>
       <input type="text" class="form-control" placeholder="i.e., Charles Dickens" ng-model="authorSearch">
     </div>
-    <button type="submit" class="btn btn-primary">Search</button>
+    <button type="submit" class="btn btn-default">Search</button>
   </form>
 </div>
 
