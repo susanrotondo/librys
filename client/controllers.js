@@ -21,8 +21,20 @@ function usersController($http) {
   console.log('Instantiated usersController');
   var vm = this;
   vm.title = "The Users Controller"
-
+  vm.haveRead = [];
   vm.books = [];
+
+  vm.getBooks = function() {
+    $http({
+      method: 'GET',
+      url: '/user/books'
+      }).then(function successCallback(response) {
+        console.log(response.data)
+        vm.haveRead = response.data;
+      }, function errorCallback(error) {
+        console.log(error);
+    });
+  }
 
   vm.findBook = function(title, author) {
     $http({
@@ -41,13 +53,15 @@ function usersController($http) {
     $http.post('/user/add-book', {book: book})
     // data will be user obj with all their books
     .success(function(data) {
-      console.log(data)
+      console.log('data is:', data)
+      // vm.haveRead = data.haveRead;
+      // console.log('vm.haveRead is:', vm.haveRead);
     })
   }
 }
-  ////////////////////////
-  // END USERS CONTROLLER
-  ////////////////////////
+////////////////////////
+// END USERS CONTROLLER
+////////////////////////
 
 
 /////////////////////////////////////////////////////////////

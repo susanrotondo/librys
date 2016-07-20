@@ -10,7 +10,19 @@
 </div>
 <!-- ***************** -->
 
-<!-- <a ui-sref="books" class="btn btn-default">Search for Books</a> -->
+<div id="have-read-display" class="container">
+  <h4>My Favorites:</h4>
+  <table class="bordered highlight centered" ng-init="uc.getBooks()">
+  <tbody>
+    <tr class="collection-items" ng-repeat="book in uc.haveRead">
+      <td class="sm-padding">
+        <img class="book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
+        {{ book.title | limitTo: 20 }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 <div id="books-controller"  class="container">
   <form class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(titleSearch, authorSearch)">
