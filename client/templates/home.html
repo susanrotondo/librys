@@ -37,7 +37,7 @@
         <td>{{ book.volumeInfo.title | limitTo: 80 }}</td>
         <td>{{ book.volumeInfo.authors[0] }}</td>
         <td>
-            <a ng-click='uc.createBook(book)' class="btn btn-default">Add to Have Read</a>
+            <a ng-click='uc.addBook(book)' class="btn btn-default">Add to Have Read</a>
         </td>
       </tr>
     </tbody>

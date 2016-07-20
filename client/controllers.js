@@ -36,9 +36,9 @@ function usersController($http) {
     });
   }
 
-  vm.createBook = function(book) {
+  vm.addBook = function(book) {
     console.log('creating book:', book)
-    $http.post('/user/books', {book: book})
+    $http.post('/user/add-book', {book: book})
     // data will be user obj with all their books
     .success(function(data) {
       console.log(data)
