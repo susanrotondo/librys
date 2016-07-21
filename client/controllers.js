@@ -8,7 +8,7 @@ angular.module('myApp')
   /////////////////////////////////////////////
   // NOTE 'AuthService' defined in services.js
   /////////////////////////////////////////////
-  usersController.$inject = ['$http']
+  usersController.$inject = ['$http', '$state']
   mainController.$inject = ['$rootScope', '$state', 'AuthService']
   loginController.$inject = ['$state', 'AuthService']
   logoutController.$inject = ['$state', 'AuthService']
@@ -17,7 +17,7 @@ angular.module('myApp')
 //////////////////////
 // USERS CONTROLLER
 //////////////////////
-function usersController($http) {
+function usersController($http, $state) {
   console.log('Instantiated usersController');
   var vm = this;
   vm.title = "The Users Controller"
@@ -54,6 +54,7 @@ function usersController($http) {
     // data will be user obj with all their books
     .success(function(data) {
       console.log('data is:', data)
+      $state.reload('home')
     })
   }
 
@@ -63,6 +64,7 @@ function usersController($http) {
     $http.patch('/user/' + book._id, {params: {book: book}})
     .success(function(data) {
       console.log('data is:', data)
+      $state.reload('home')
     })
   }
 
