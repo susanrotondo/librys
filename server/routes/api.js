@@ -2,7 +2,8 @@ var
   express = require('express'),
   router = express.Router(),
   passport = require('passport'),
-  User = require('../models/User.js')
+  User = require('../models/User.js').User
+  Book = require('../models/User.js').Book
   // Book = require('../models/Book.js')
 
 router.post('/register', function(req, res) {
@@ -65,32 +66,83 @@ router.get('/status', function(req, res) {
 });
 
 // TODO https://docs.mongodb.com/manual/reference/operator/update/pull/
+// '/user/:book_id'
 router.patch('/:id', function(req, res) {
+  console.log(req.query)
   console.log(req.user._id)
-
-  User.findById(req.user, function(err, user){
-    // console.log(user._id)
-    // console.log(user.haveRead[0])
-    for (book in user.haveRead){
-      console.log("each book" + user.haveRead[book]._id);
-      console.log("params book" + req.params.id);
-
-      if( user.haveRead[book]._id ==  req.params.id) {
-        user.haveRead.splice(book, 1);
-
+  if(req.query.delete) {
+    User.findById(req.user, function(err, user){
+      // console.log(user._id)
+      // console.log(user.haveRead[0])
+      for (book in user.haveRead){
+        // console.log("each book" + user.haveRead[book]._id);
+        // console.log("params book" + req.params.id);
+        if(user.haveRead[book]._id ==  req.params.id) {
+          user.haveRead.splice(book, 1);
+        }
       }
-    }
-
-    user.save(function(err, user) {
-       if(err) return console.log(err);
-       res.json(user);
+      user.save(function(err, user) {
+         if(err) return console.log(err);
+         res.json(user);
+      })
     })
-
-    //if(req.body.rating) user.haveRead.rating = req.body.rating;
-  })
-  //res.json(user)
-
+  }
+  if(req.query.rating) {
+    // console.log(req.query.rating)
+    // console.log('req.user:', req.user);
+    User.findById(req.user, function(err, user){
+      for (book in user.haveRead){
+        // console.log("each book" + user.haveRead[book]._id);
+        // console.log("params book" + req.params.id);
+        if(user.haveRead[book]._id ==  req.params.id) {
+          user.haveRead[book].rating = Number(req.query.rating);
+        }
+      }
+      user.save(function(err, user) {
+         if(err) return console.log(err);
+         res.json(user);
+      })
+      // console.log('user in findById is:', user)
+      // var book = user.haveRead.id(req.params.id);
+      // console.log(book)
+      // console.log('req.params.id', req.params.id);
+      // Book.findById(req.params.id, function(err, book) {
+      //   if (err) return err;
+      //   console.log('book is:', book);
+      // });
+      // Book.findOneAndUpdate({_id: req.params.id}, {$set:{rating: Number(req.query.rating)}}, function(err, book){
+      //   console.log('book:', book)
+      //   console.log('inside of book update')
+      //   if (err) return err;
+        // user.save(function(err, user) {
+        //    if(err) return console.log(err);
+        //    res.json(user);
+        // })
+        // res.json(book);
+      // })
+    })
+  }
 })
+
+// router.patch('/:id/books/:book_id/edit', function(req, res) {
+//   console.log(req.user._id)
+//
+//   User.findById(req.user, function(err, user){
+//     // console.log(user._id)
+//     // console.log(user.haveRead[0])
+//     for(book in user.haveRead) {
+//       console.log("each book" + user.haveRead[book]._id);
+//       console.log("params book" + req.params.id);
+//       if( user.haveRead[book]._id ==  req.params.id) {
+//         user.haveRead.splice(book, 1);
+//       }
+//     }
+//     user.save(function(err, user) {
+//        if(err) return console.log(err);
+//        res.json(user);
+//     })
+//   })
+// })
 
 ////////////////////////////////////////////////
 //         USER COLLECTIONS ROUTES
@@ -128,7 +180,8 @@ router.post('/add-book', function(req, res) {
         smThumbnailUrl: req.body.book.volumeInfo.imageLinks.smallThumbnail,
         title: req.body.book.volumeInfo.title,
         authors: req.body.book.volumeInfo.authors,
-        is_favorite: false
+        is_favorite: false,
+        rating: 5
       });
       // console.log(user);
       user.save(function(err, user) {

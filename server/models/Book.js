@@ -1,3 +1,26 @@
+// User model
+// var
+//   mongoose = require('mongoose'),
+//   bookSchema = require('bookSchema'),
+
+  // Schema = mongoose.Schema,
+  //
+  // bookSchema = new Schema({
+  //   // GB api books object, volume_id found: .accessInfo.id
+  //   volume_id: {type: String, required: true},
+  //   // GB api books object, smThumbnailUrl found: .volumeInfo.imageLinks.smallThumbnail
+  //   smThumbnailUrl: {type: String, required: true},
+  //   // GB api books object, title found: .volumeInfo.title
+  //   title: {type: String, required: true},
+  //   // GB api books object, title found: .volumeInfo.authors
+  //   authors: {type: Array, required: true},
+  //   is_favorite: Boolean,
+  //   rating: Number
+  // });
+
+// var Book = mongoose.model('Book', bookSchema);
+// module.exports = Book;
+
 // var
 //   mongoose = require('mongoose'),
 //   Schema = mongoose.Schema,

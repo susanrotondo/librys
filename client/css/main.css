@@ -62,11 +62,15 @@ body {
   height: 60px;
 }
 
-.books-display {
+.collections {
   margin-top: 8px;
   border: 1px solid #c6bbb4;
   height: 200px;
   width: 100%;
+}
+
+/*SEARCH RESULTS DISPLAY ONLY:*/
+#search-results-display {
   overflow: scroll;
 }
 

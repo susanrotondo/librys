@@ -32,4 +32,9 @@ var
 userSchema.plugin(passportLocalMongoose);
 
 var User = mongoose.model('User', userSchema);
-module.exports = User;
+
+var Book = mongoose.model('Book', bookSchema);
+module.exports = {
+  User: User,
+  Book: Book
+}
