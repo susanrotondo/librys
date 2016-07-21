@@ -2,10 +2,10 @@
   <div class="container">
     <img id="nav-icon" src="../../images/xsm_open_book.png" alt="book icon"/>
     <div ng-if="main.currentUser.username">
-      <h3>Welcome, {{ main.currentUser.username }}</h3>
+      <h4 id="nav-name-display">Welcome, {{ main.currentUser.username }}</h4>
       <div ng-controller="logoutController as logoutCtrl">
-        <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
+        <a ng-click='logoutCtrl.logout()' class="btn btn-default navbar-right">Logout</a>
       </div>
-    </div> --> <!-- CLOSES: ng-if="main.isLoggedIn()" -->
+    </div> <!-- CLOSES: ng-if="main.isLoggedIn()" -->
   </div>
 </nav>

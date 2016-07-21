@@ -4,6 +4,13 @@ angular.module('myApp')
   .controller('logoutController', logoutController)
   .controller('registerController', registerController)
   .controller('usersController', usersController)
+  // nav-bar directive:
+  .directive('myNav', function() {
+  return {
+    restrict: 'E',
+    templateUrl: 'templates/partials/navbar.html'
+    }
+  })
 
   /////////////////////////////////////////////
   // NOTE 'AuthService' defined in services.js
