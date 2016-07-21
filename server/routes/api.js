@@ -64,12 +64,31 @@ router.get('/status', function(req, res) {
   })
 });
 
+// TODO https://docs.mongodb.com/manual/reference/operator/update/pull/
 router.patch('/:id', function(req, res) {
-  User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
-    console.log(user)
-    if(req.body.rating) user.haveRead.rating = req.body.rating;
+  console.log(req.user._id)
+
+  User.findById(req.user, function(err, user){
+    // console.log(user._id)
+    // console.log(user.haveRead[0])
+    for (book in user.haveRead){
+      console.log("each book" + user.haveRead[book]._id);
+      console.log("params book" + req.params.id);
+
+      if( user.haveRead[book]._id ==  req.params.id) {
+        user.haveRead.splice(book, 1);
+
+      }
+    }
+
+    user.save(function(err, user) {
+       if(err) return console.log(err);
+       res.json(user);
+    })
+
+    //if(req.body.rating) user.haveRead.rating = req.body.rating;
   })
-  res.json(req.body)
+  //res.json(user)
 
 })
 
@@ -87,20 +106,17 @@ router.get('/books', function(req, res) {
 
 
 
-router.delete('/books/:id', function(req, res) {
-  console.log('req.user._id', req.user._id);
-  console.log('req.params.id', req.params.id);
-  User.findById(req.user._id, function(err, user) {
-    if(err) return console.log(err);
-    // user.haveRead.splice(user.haveRead.indexOf(), 1);
-    // console.log(user);
-
-    user.save(function(err, user) {
-       if(err) return console.log(err);
-       res.json(user);
-    })
-  })
-})
+// router.delete('/books/:id', function(req, res) {
+//   console.log('req.user._id', req.user._id);
+//   console.log('req.params.id', req.params.id);
+//   User.findById(req.user._id, function(err, user) {
+//     if(err) return console.log(err);
+//     user.save(function(err, user) {
+//        if(err) return console.log(err);
+//        res.json(user);
+//     })
+//   })
+// })
 
 router.post('/add-book', function(req, res) {
   // console.log('req.user.haveRead:', req.user.haveRead)

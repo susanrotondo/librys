@@ -59,7 +59,7 @@ function usersController($http) {
 
   vm.removeBook = function(book) {
     console.log('deleting book:', book);
-    $http.delete('/user/books/' + book._id, {params: {book: book}})
+    $http.patch('/user/' + book._id, {params: {book: book}})
     .success(function(data) {
       console.log('data is:', data)
     })
