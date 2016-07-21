@@ -65,6 +65,10 @@ router.get('/status', function(req, res) {
   })
 });
 
+///////////////////////
+// USER COLLECTIONS
+///////////////////////
+
 // TODO https://docs.mongodb.com/manual/reference/operator/update/pull/
 // '/user/:book_id'
 router.patch('/:id', function(req, res) {
@@ -102,51 +106,10 @@ router.patch('/:id', function(req, res) {
          if(err) return console.log(err);
          res.json(user);
       })
-      // console.log('user in findById is:', user)
-      // var book = user.haveRead.id(req.params.id);
-      // console.log(book)
-      // console.log('req.params.id', req.params.id);
-      // Book.findById(req.params.id, function(err, book) {
-      //   if (err) return err;
-      //   console.log('book is:', book);
-      // });
-      // Book.findOneAndUpdate({_id: req.params.id}, {$set:{rating: Number(req.query.rating)}}, function(err, book){
-      //   console.log('book:', book)
-      //   console.log('inside of book update')
-      //   if (err) return err;
-        // user.save(function(err, user) {
-        //    if(err) return console.log(err);
-        //    res.json(user);
-        // })
-        // res.json(book);
-      // })
     })
   }
 })
 
-// router.patch('/:id/books/:book_id/edit', function(req, res) {
-//   console.log(req.user._id)
-//
-//   User.findById(req.user, function(err, user){
-//     // console.log(user._id)
-//     // console.log(user.haveRead[0])
-//     for(book in user.haveRead) {
-//       console.log("each book" + user.haveRead[book]._id);
-//       console.log("params book" + req.params.id);
-//       if( user.haveRead[book]._id ==  req.params.id) {
-//         user.haveRead.splice(book, 1);
-//       }
-//     }
-//     user.save(function(err, user) {
-//        if(err) return console.log(err);
-//        res.json(user);
-//     })
-//   })
-// })
-
-////////////////////////////////////////////////
-//         USER COLLECTIONS ROUTES
-////////////////////////////////////////////////
 
 router.get('/books', function(req, res) {
   User.findById(req.user._id, function(err, user) {
@@ -156,32 +119,19 @@ router.get('/books', function(req, res) {
   })
 })
 
-
-
-// router.delete('/books/:id', function(req, res) {
-//   console.log('req.user._id', req.user._id);
-//   console.log('req.params.id', req.params.id);
-//   User.findById(req.user._id, function(err, user) {
-//     if(err) return console.log(err);
-//     user.save(function(err, user) {
-//        if(err) return console.log(err);
-//        res.json(user);
-//     })
-//   })
-// })
-
 router.post('/add-book', function(req, res) {
   // console.log('req.user.haveRead:', req.user.haveRead)
   // there is req.user since submission form is only visible to logged in user; attach new book to current user
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
-      user.haveRead.push({
+      user.haveRead.unshift({
+      // user.haveRead.push({
         volume_id: req.body.book.id,
         smThumbnailUrl: req.body.book.volumeInfo.imageLinks.smallThumbnail,
         title: req.body.book.volumeInfo.title,
         authors: req.body.book.volumeInfo.authors,
         is_favorite: false,
-        rating: 5
+        rating: 0
       });
       // console.log(user);
       user.save(function(err, user) {
