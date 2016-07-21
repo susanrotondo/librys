@@ -59,11 +59,17 @@ function usersController($http) {
 
   vm.removeBook = function(book) {
     console.log('deleting book:', book);
+    // TODO change to '/user/book/' + book._id ??? since adding the book id to the user route doesn't make sense???
     $http.patch('/user/' + book._id, {params: {book: book}})
     .success(function(data) {
       console.log('data is:', data)
     })
   }
+
+  vm.editRating = function(book) {
+    console.log('editing rating to book:', book);
+  }
+
 }
 ////////////////////////
 // END USERS CONTROLLER

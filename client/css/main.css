@@ -94,7 +94,7 @@ body {
 /* STAR RATING:         */
 /* ----------------------- */
 .rating{
-  color: #a9a9a9;
+  /*color: #a9a9a9;*/
   margin: 0;
   padding: 0;
 }
@@ -112,7 +112,11 @@ ul.rating {
   cursor: pointer;
 }
 
-.rating .filled {
+.empty {
+  color: #a9a9a9;
+}
+
+.filled {
   color: #21568b;
 }
 
