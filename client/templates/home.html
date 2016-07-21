@@ -24,11 +24,11 @@
             <p>{{ book.title | limitTo: 28 }}</p>
           </div>
           <ul class="rating">
-            <li ng-click="uc.editRating()">&#9733;</li>
-            <li>&#9733;</li>
-            <li>&#9733;</li>
-            <li>&#9733;</li>
-            <li>&#9733;</li>
+            <li class="empty" ng-click="uc.editRating()">&#9733;</li>
+            <li class="empty" ng-click="uc.editRating()">&#9733;</li>
+            <li class="empty" ng-click="uc.editRating()">&#9733;</li>
+            <li class="empty" ng-click="uc.editRating()">&#9733;</li>
+            <li class="empty" ng-click="uc.editRating()">&#9733;</li>
           </ul>
           <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
         </div>
