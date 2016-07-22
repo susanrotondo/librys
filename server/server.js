@@ -18,6 +18,7 @@ var
   User = require('./models/User.js')
 
 // conncect to MongoDB
+console.log(process.env.MONGODB);
 mongoose.connect(process.env.MONGODB, function(err) {
   if(err) return console.log(err);
   console.log('Connected to MongoDB (my-libris)');
