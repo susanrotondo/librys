@@ -32,3 +32,4 @@ Access [Here](https://pacific-hollows-56597.herokuapp.com/ )
 * Books search form needs to reset after search in the case(s) that no valid book was found for the search terms and/or the user doesn't find a book in the returned results.
 * Some of the routes need to be adjusted to be RESTful.
 * Star rating functionality needs to be refactored. Possibly via a custom directive.
+* Need to add pagination to collection display.
