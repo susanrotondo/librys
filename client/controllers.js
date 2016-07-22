@@ -31,6 +31,25 @@ function usersController($http, $state) {
   vm.haveRead = [];
   vm.books = [];
 
+  vm.myStyle = {
+    "color" : "#c6bbb4"
+  }
+
+  vm.stars = function(book, highlighted, num) {
+    // console.log('book.rating:', book.rating)
+    // console.log('num:', num)
+    if (highlighted == true) {
+      if (book.rating >= num) {
+        return true
+      }else{return false}
+    }else{
+      if (book.rating < num) {
+        return true
+      }else{return false}
+    }
+
+  }
+
   vm.getBooks = function() {
     $http({
       method: 'GET',

@@ -95,6 +95,11 @@ body {
   margin: 0;
 }
 
+#pager-container {
+  padding-left: 0;
+  padding-right: 30px;
+}
+
 /* ----------------------- */
 /* STAR RATING:         */
 /* ----------------------- */
@@ -117,9 +122,9 @@ ul.rating {
   cursor: pointer;
 }
 
-.empty {
+/*.empty {
   color: #c6bbb4;
-}
+}*/
 
 .chosen {
   color: #3c887e;

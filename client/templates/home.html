@@ -27,11 +27,17 @@
             <p>{{ book.title | limitTo: 28 }}</p>
           </div>
           <ul class="rating">
-            <li class="empty" ng-click="uc.updateRating(book, 1)">&#9733;</li>
-            <li class="empty" ng-click="uc.updateRating(book, 2)">&#9733;</li>
-            <li class="empty" ng-click="uc.updateRating(book, 3)">&#9733;</li>
-            <li class="empty" ng-click="uc.updateRating(book, 4)">&#9733;</li>
-            <li class="empty" ng-click="uc.updateRating(book, 5)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,1)" style="color:yellow;" ng-click="uc.updateRating(book, 1)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,2)" style="color:yellow;" ng-click="uc.updateRating(book, 2)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,3)" style="color:yellow;" ng-click="uc.updateRating(book, 3)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,4)" style="color:yellow;" ng-click="uc.updateRating(book, 4)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,5)" style="color:yellow;" ng-click="uc.updateRating(book, 5)">&#9733;</li>
+
+            <li ng-if="uc.stars(book,false,1)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 1)">&#9733;</li>
+            <li ng-if="uc.stars(book,false,2)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 2)">&#9733;</li>
+            <li ng-if="uc.stars(book,false,3)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 3)">&#9733;</li>
+            <li ng-if="uc.stars(book,false,4)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 4)">&#9733;</li>
+            <li ng-if="uc.stars(book,false,5)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 5)">&#9733;</li>
           </ul>
           <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
         </div>
@@ -41,7 +47,7 @@
 </table>
 </div>
 
-<div class="container">
+<div class="container" id="pager-container">
   <ul class="pager">
    <li class="previous"><a href="#" class="btn btn-default">Previous</a></li>
    <li class="next"><a href="#" class="btn btn-default">Next</a></li>
