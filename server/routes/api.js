@@ -120,8 +120,6 @@ router.get('/books', function(req, res) {
 })
 
 router.post('/add-book', function(req, res) {
-  // console.log('req.user.haveRead:', req.user.haveRead)
-  // there is req.user since submission form is only visible to logged in user; attach new book to current user
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
       user.haveRead.unshift({

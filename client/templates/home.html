@@ -27,11 +27,11 @@
             <p>{{ book.title | limitTo: 28 }}</p>
           </div>
           <ul class="rating">
-            <li ng-if="uc.stars(book,true,1)" style="color:yellow;" ng-click="uc.updateRating(book, 1)">&#9733;</li>
-            <li ng-if="uc.stars(book,true,2)" style="color:yellow;" ng-click="uc.updateRating(book, 2)">&#9733;</li>
-            <li ng-if="uc.stars(book,true,3)" style="color:yellow;" ng-click="uc.updateRating(book, 3)">&#9733;</li>
-            <li ng-if="uc.stars(book,true,4)" style="color:yellow;" ng-click="uc.updateRating(book, 4)">&#9733;</li>
-            <li ng-if="uc.stars(book,true,5)" style="color:yellow;" ng-click="uc.updateRating(book, 5)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,1)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 1)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,2)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 2)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,3)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 3)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,4)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 4)">&#9733;</li>
+            <li ng-if="uc.stars(book,true,5)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 5)">&#9733;</li>
 
             <li ng-if="uc.stars(book,false,1)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 1)">&#9733;</li>
             <li ng-if="uc.stars(book,false,2)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 2)">&#9733;</li>

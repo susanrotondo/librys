@@ -104,7 +104,6 @@ body {
 /* STAR RATING:         */
 /* ----------------------- */
 .rating{
-  /*color: #a9a9a9;*/
   margin: 0;
   padding: 0;
 }
@@ -120,14 +119,6 @@ ul.rating {
   text-align: center;
   font-weight: bold;
   cursor: pointer;
-}
-
-/*.empty {
-  color: #c6bbb4;
-}*/
-
-.chosen {
-  color: #3c887e;
 }
 
 /* ----------------------- */
