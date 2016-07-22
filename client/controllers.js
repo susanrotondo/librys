@@ -63,12 +63,25 @@ function usersController($http, $state) {
   }
 
   vm.findBook = function(title, author) {
+    // console.log(!!author);
+    vm.error = false;
+    if(!author) {
+      author = '';
+    }
+    if(!title) {
+      title = '';
+    }
     $http({
       method: 'GET',
       url: 'https://www.googleapis.com/books/v1/volumes?q=' + title + '+inauthor:' + author + '&key=AIzaSyAW-cYjhZ7Z_bR8AblZsJKS3DrC_tstxWQ'
       }).then(function successCallback(response) {
-        vm.books = response.data.items;
-        console.log(vm.books);
+        if(!response.data.items) {
+          // vm.error = true;
+          // vm.errorMessage = "No books were found! Try again!";
+        } else {
+          vm.books = response.data.items;
+          console.log('vm.books:', vm.books);
+        }
       }, function errorCallback(error) {
         console.log(error);
     });
