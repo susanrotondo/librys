@@ -3,6 +3,7 @@ var
   express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
+  dotenv = require('dotenv').load({silent:true}),
   logger = require('morgan'),
   cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser'),
@@ -17,7 +18,7 @@ var
   User = require('./models/User.js')
 
 // conncect to MongoDB
-mongoose.connect('mongodb://localhost/my-libris', function(err) {
+mongoose.connect(process.env.DB_URL, function(err) {
   if(err) return console.log(err);
   console.log('Connected to MongoDB (my-libris)');
 });
