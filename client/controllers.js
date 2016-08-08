@@ -11,6 +11,12 @@ angular.module('myApp')
     templateUrl: 'templates/partials/navbar.html'
     }
   })
+  .filter('startFrom', function() {
+    return function(input, start) {
+        start = +start; //parse to int
+        return input.slice(start);
+    }
+  })
 
   /////////////////////////////////////////////
   // NOTE 'AuthService' defined in services.js
@@ -31,8 +37,15 @@ function usersController($http, $state) {
   vm.haveRead = [];
   vm.books = [];
 
+  vm.currentPage = 0;
+  vm.pageSize = 9;
+
   vm.myStyle = {
     "color" : "#c6bbb4"
+  }
+
+  vm.numberOfPages = function(){
+      return Math.ceil(vm.haveRead.length / vm.pageSize);
   }
 
   vm.stars = function(book, highlighted, num) {

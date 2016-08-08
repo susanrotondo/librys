@@ -13,14 +13,15 @@
 <!-- <my-nav></my-nav> -->
 
 <div class="container">
-    <h4>My Bookshelf ({{uc.haveRead.length}} books):</h4>
+    <h4>My Bookshelf (you have {{uc.haveRead.length}} books on your shelf):</h4>
 </div>
 
 <div id="have-read-display" class="container collections">
   <table class="bordered highlight centered" ng-init="uc.getBooks()">
   <tbody>
     <tr class="collection-items">
-      <td class="sm-padding" ng-repeat="book in uc.haveRead | limitTo: 9">
+      <!-- <td class="sm-padding" ng-repeat="book in uc.haveRead | limitTo: 9"> -->
+      <td class="sm-padding" ng-repeat="book in uc.haveRead | startFrom: uc.currentPage * uc.pageSize | limitTo: uc.pageSize">
         <div class="hr-books">
           <img class="hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
           <div class="hr-books-title">
@@ -45,6 +46,14 @@
     </tr>
   </tbody>
 </table>
+</div> <!-- END have-read-display -->
+
+<div class="container">
+  <!-- <button ng-disabled="uc.currentPage == 0" ng-click="uc.currentPage = uc.currentPage - 1">Previous</button> -->
+  <a ng-disabled="uc.currentPage == 0" ng-click="uc.currentPage = uc.currentPage - 1" class="btn btn-default">Previous</a>
+  {{uc.currentPage +1 }}/{{uc.numberOfPages()}} pages
+  <!-- <button ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1">Next</button> -->
+  <a ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1" class="btn btn-default">Next</a>
 </div>
 
 <div class="container">
