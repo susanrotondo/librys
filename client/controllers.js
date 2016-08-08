@@ -60,7 +60,6 @@ function usersController($http, $state) {
         return true
       }else{return false}
     }
-
   }
 
   vm.getBooks = function() {

@@ -12,15 +12,14 @@
 
 <!-- <my-nav></my-nav> -->
 
-<div class="container">
+<div class="container display-container">
     <h4>My Bookshelf (you have {{uc.haveRead.length}} books on your shelf):</h4>
 </div>
 
-<div id="have-read-display" class="container collections">
+<div id="have-read-display" class="container collections display-container">
   <table class="bordered highlight centered" ng-init="uc.getBooks()">
   <tbody>
     <tr class="collection-items">
-      <!-- <td class="sm-padding" ng-repeat="book in uc.haveRead | limitTo: 9"> -->
       <td class="sm-padding" ng-repeat="book in uc.haveRead | startFrom: uc.currentPage * uc.pageSize | limitTo: uc.pageSize">
         <div class="hr-books">
           <img class="hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
@@ -48,32 +47,30 @@
 </table>
 </div> <!-- END have-read-display -->
 
-<div class="container">
-  <!-- <button ng-disabled="uc.currentPage == 0" ng-click="uc.currentPage = uc.currentPage - 1">Previous</button> -->
+<div class="container display-container">
   <a ng-disabled="uc.currentPage == 0" ng-click="uc.currentPage = uc.currentPage - 1" class="btn btn-default">Previous</a>
   {{uc.currentPage +1 }}/{{uc.numberOfPages()}} pages
-  <!-- <button ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1">Next</button> -->
   <a ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1" class="btn btn-default">Next</a>
 </div>
 
-<div class="container">
+<div class="container display-container">
   <form name="form.search" class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(titleSearch, authorSearch)">
     <h4>Search for Books To Add to Your Bookshelf:</h4>
     <div class="form-group">
       <label for="title">Title</label>
       <input name="titleSearch" type="text" class="form-control" placeholder="i.e., Great Expectations" ng-model="titleSearch">
-      <span ng-show="myForm.titleSearch.$invalid">title is required</span>
+      <!-- <span ng-show="myForm.titleSearch.$invalid">title is required</span> -->
     </div>
     <div class="form-group">
       <label for="author">Author</label>
       <input name="authorSearch" type="text" class="form-control" placeholder="i.e., Charles Dickens" ng-model="authorSearch">
-      <span ng-show="myForm.authorSearch.$invalid">author is required</span>
+      <!-- <span ng-show="myForm.authorSearch.$invalid">author is required</span> -->
     </div>
     <button type="submit" class="btn btn-default">Search</button>
   </form>
 </div>
 
-<div class="container collections" id="search-results-display">
+<div class="container collections display-container" id="search-results-display">
   <div ng-show="uc.error" class="alert alert-danger">{{ uc.errorMessage }}</div>
   <table class="bordered highlight centered">
   <tbody>
