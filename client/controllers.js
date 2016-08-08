@@ -202,7 +202,7 @@ function registerController($state, AuthService) {
     AuthService.register(vm.registerForm.username, vm.registerForm.password, vm.registerForm.email)
       // handle success
       .then(function () {
-        $state.go('profile')
+        $state.go('home')
         vm.disabled = false
         vm.registerForm = {}
       })

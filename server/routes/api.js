@@ -69,8 +69,7 @@ router.get('/status', function(req, res) {
 // USER COLLECTIONS
 ///////////////////////
 
-// TODO https://docs.mongodb.com/manual/reference/operator/update/pull/
-// '/user/:book_id'
+// TODO '/user/:book_id'
 router.patch('/:id', function(req, res) {
   console.log(req.query)
   console.log(req.user._id)
