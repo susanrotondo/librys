@@ -19,7 +19,19 @@
   </head>
   <body>
     <div class="container" ng-controller="mainController as main">
-      <!-- <my-nav></my-nav> -->
+      <!-- Nav Bar ONLY shows if valid user currently logged in -->
+      <nav id="main-nav" class="navbar navbar-default navbar-fixed-top" ng-if="main.currentUser.username">
+        <div class="container">
+          <div class="navbar-brand">
+            <img id="nav-icon" src="images/xsm_open_book.png" alt="book icon"/>
+          </div>
+          <div class="nav navbar-nav navbar-brand navbar-right" ng-controller="logoutController as logoutCtrl">
+            <h4 id="nav-name-display">{{ main.currentUser.username }}</h4>
+            <button type="button" class="btn btn-default navbar-btn" ng-click='logoutCtrl.logout()'>Logout</button>
+          </div>
+        </div>
+      </nav>
+      <!-- END Nav Bar -->
       <div ui-view></div>
     </div>
   </body>

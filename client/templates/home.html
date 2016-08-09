@@ -1,17 +1,3 @@
-<!-- ***************** -->
-<!-- TODO: remove to nav partial: -->
-<!-- ***************** -->
-<div ng-if="main.currentUser.username" id="fake-navbar">
-  <img src="../../images/xsm_open_book.png"/>
-  <h3>Welcome, {{ main.currentUser.username }}</h3>
-  <div ng-controller="logoutController as logoutCtrl">
-    <a ng-click='logoutCtrl.logout()' class="btn btn-default">Logout</a>
-  </div>
-</div>
-<!-- ***************** -->
-
-<!-- <my-nav></my-nav> -->
-
 <div class="container display-container">
     <h4>My Bookshelf (you have {{uc.haveRead.length}} books on your shelf):</h4>
 </div>

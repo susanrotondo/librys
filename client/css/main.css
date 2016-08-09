@@ -7,7 +7,7 @@ body {
   /*smoky black*/
   color: #090e0e;
   /*because of fixed nav-bar:*/
-  /*padding-top: 70px;*/
+  padding-top: 90px;
 }
 
 /* ----------------------- */
@@ -49,11 +49,28 @@ body {
   background-color: #c6bbb4;
   margin: 20px;
 }
+/* --------------- */
+/* Nav bar styling */
+/* --------------- */
 
-#fake-navbar h3, #fake-navbar div {
-  display: inline-block;
+#main-nav {
+  height: 90px;
+  background-color: #e0e0e0;
+  border-color: rgba(255,255,255,0);
 }
 
+#nav-icon {
+  height: 60px;
+}
+
+#nav-name-display {
+  display: inline-block;
+  padding-right: 6px;
+  color: #090e0e;
+}
+/* ------------------- */
+/* END Nav bar styling */
+/* ------------------- */
 .books-list-items {
   list-style-type: none;
 }
