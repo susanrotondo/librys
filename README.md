@@ -3,6 +3,8 @@
 # librys
 A handy web bookshelf where you can track books you've read!
 
+librys uses the Google Books API to allow users to easily search for books they've read. Books can be stored on their "bookshelf" for easy reference and can also be rated.
+
 
 ## WDI-SM-23 Project 4
 
@@ -15,6 +17,20 @@ Or you to install the app, fork the GitHub [repository](https://github.com/susan
 * Clone the forked repo to your local workspace
 * In your local app directory, use npm install to install app dependencies specified in package.json
 * Connect your local app to a local (MongoDB) or remote (mLab) database of your own
+
+## Technologies:
+* JavaScript
+* Node.js
+* MongoDB
+* Express
+* Angular.js
+* UI Bootstrap
+* HTML
+* CSS
+
+### Other:
+* Google Books API
+* Adobe Illustrator
 
 ## User Stories:
 #### MVP:
@@ -33,5 +49,6 @@ Or you to install the app, fork the GitHub [repository](https://github.com/susan
 
 #### Known Issues:
 * Books search form needs to reset after search in the case(s) that no valid book was found for the search terms and/or the user doesn't find a book in the returned results.
+* After changing rating for any book, state is reloaded, meaning that even if user had been on "page 4" of bookshelf, view will immediately switch to "page 1"
 * Some of the routes need to be adjusted to be RESTful.
 * Star rating functionality needs to be refactored. Possibly via a custom directive.
