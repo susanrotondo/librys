@@ -85,7 +85,7 @@ function usersController($http, $state) {
     }
     $http({
       method: 'GET',
-      url: 'https://www.googleapis.com/books/v1/volumes?q=' + title + '+inauthor:' + author + '&key=AIzaSyAW-cYjhZ7Z_bR8AblZsJKS3DrC_tstxWQ'
+      url: 'https://www.googleapis.com/books/v1/volumes?q=' + title + '+inauthor:' + author + '&key= AIzaSyAD3kEHhu_dr_ndfkwGMyX5Ay_Oa2KDPsw'
       }).then(function successCallback(response) {
         if(!response.data.items) {
           // vm.error = true;
