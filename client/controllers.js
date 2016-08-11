@@ -38,7 +38,7 @@ function usersController($http, $state) {
   vm.books = [];
 
   vm.currentPage = 0;
-  vm.pageSize = 9;
+  vm.pageSize = 8;
 
   vm.myStyle = {
     "color" : "#c6bbb4"

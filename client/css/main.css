@@ -71,6 +71,19 @@ body {
 /* ------------------- */
 /* END Nav bar styling */
 /* ------------------- */
+
+/* --------------------- */
+/*SEARCH RESULTS DISPLAY */
+/* --------------------- */
+#search-results-display {
+  overflow: scroll;
+  border: 1px solid #c6bbb4;
+}
+
+
+/* -------------- */
+/* BOOKS DISPLAYS */
+/* -------------- */
 .books-list-items {
   list-style-type: none;
 }
@@ -81,18 +94,39 @@ body {
 
 .collections {
   margin-top: 8px;
-  border: 1px solid #c6bbb4;
+  /*border: 1px solid #c6bbb4;*/
   height: 200px;
   width: 100%;
 }
 
-/*SEARCH RESULTS DISPLAY ONLY:*/
-#search-results-display {
-  overflow: scroll;
+/* ------------- */
+/*HAVE READ BOOKS*/
+/* ------------- */
+
+#pager-div {
+  padding-left: 8px;
+}
+
+#have-read-display {
+  float: left;
+  position: absolute;
+  left: 74px;
+  top: 30px;
+  padding-top: 4px;
+  padding-left: 32px;
+  width: 86%;
+}
+
+.frame {
+  position: relative;
+}
+
+.frame-img {
+  width: 100%;
 }
 
 .hr-book-front {
-  height: 100px;
+  height: 86px;
 }
 
 .hr-books {
@@ -110,11 +144,6 @@ body {
   font-size: 12px;
   padding: none;
   margin: 0;
-}
-
-#pager-container {
-  padding-left: 0;
-  padding-right: 30px;
 }
 
 /* ----------------------- */
