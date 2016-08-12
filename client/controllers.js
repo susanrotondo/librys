@@ -193,8 +193,7 @@ function logoutController($state, AuthService) {
     // call logout from service
     AuthService.logout()
       .then(function () {
-        // TODO once a login button that will go to login view on click is on index, change to .go('index')
-        $state.go('login')
+        $state.go('index')
       })
   }
 }
