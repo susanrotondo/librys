@@ -11,6 +11,7 @@ angular.module('myApp')
     templateUrl: 'templates/partials/navbar.html'
     }
   })
+  // books collection pagination filter:
   .filter('startFrom', function() {
     return function(input, start) {
         start = +start; //parse to int
@@ -49,16 +50,18 @@ function usersController($http, $state) {
   }
 
   vm.stars = function(book, highlighted, num) {
-    // console.log('book.rating:', book.rating)
-    // console.log('num:', num)
     if (highlighted == true) {
       if (book.rating >= num) {
         return true
-      }else{return false}
-    }else{
+      } else {
+        return false
+      }
+    } else {
       if (book.rating < num) {
         return true
-      }else{return false}
+      } else {
+        return false
+      }
     }
   }
 
@@ -67,7 +70,7 @@ function usersController($http, $state) {
       method: 'GET',
       url: '/user/books'
       }).then(function successCallback(response) {
-        console.log(response.data)
+        // console.log(response.data)
         vm.haveRead = response.data;
       }, function errorCallback(error) {
         console.log(error);
@@ -100,32 +103,27 @@ function usersController($http, $state) {
   }
 
   vm.addBook = function(book) {
-    // console.log('creating book:', book)
-    $http.post('/user/add-book', {book: book})
+    $http.post('/user/books/add-book', {book: book})
     // data will be user obj with all their books
     .success(function(data) {
-      console.log('data is:', data)
+      // console.log('data is:', data)
       $state.reload('home')
     })
   }
-
+  // patch req because actually updating a collection belonging to user
+  // removing book from collection, not deleting a model
   vm.removeBook = function(book) {
-    console.log('deleting book:', book);
-    /////////////////////////
-    // TODO change to '/user/book/' + book._id ??? since adding the book id to the user route doesn't make sense???
-    ////////////////////////
-    $http.patch('/user/' + book._id + '?delete=true', {params: {book: book}})
+    $http.patch('/user/books/' + book._id + '?delete=true', {params: {book: book}})
     .success(function(data) {
-      console.log('data is:', data)
+      // console.log('data is:', data)
       $state.reload('home')
     })
   }
 
   vm.updateRating = function(book, newRating) {
-    console.log('updating rating to book:', book, newRating);
-    $http.patch('/user/' + book._id + '?rating=' + newRating, {params: {book: book}})
+    $http.patch('/user/books/' + book._id + '?rating=' + newRating, {params: {book: book}})
     .success(function(data) {
-      console.log('data is:', data)
+      // console.log('data is:', data)
       $state.reload('home')
     })
   }

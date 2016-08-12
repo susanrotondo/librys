@@ -4,7 +4,6 @@ var
   passport = require('passport'),
   User = require('../models/User.js').User
   Book = require('../models/User.js').Book
-  // Book = require('../models/Book.js')
 
 router.post('/register', function(req, res) {
   User.register(new User({ username: req.body.username }),
@@ -65,21 +64,16 @@ router.get('/status', function(req, res) {
   })
 });
 
-///////////////////////
-// USER COLLECTIONS
-///////////////////////
+//////////////////////////
+// USER BOOKS COLLECTIONS
+//////////////////////////
 
-// TODO '/user/:book_id'
-router.patch('/:id', function(req, res) {
-  console.log(req.query)
-  console.log(req.user._id)
+// removing the book as patch req because not deleting Book;
+// removing book from User collection
+router.patch('/books/:id', function(req, res) {
   if(req.query.delete) {
     User.findById(req.user, function(err, user){
-      // console.log(user._id)
-      // console.log(user.haveRead[0])
       for (book in user.haveRead){
-        // console.log("each book" + user.haveRead[book]._id);
-        // console.log("params book" + req.params.id);
         if(user.haveRead[book]._id ==  req.params.id) {
           user.haveRead.splice(book, 1);
         }
@@ -91,12 +85,8 @@ router.patch('/:id', function(req, res) {
     })
   }
   if(req.query.rating) {
-    // console.log(req.query.rating)
-    // console.log('req.user:', req.user);
     User.findById(req.user, function(err, user){
       for (book in user.haveRead){
-        // console.log("each book" + user.haveRead[book]._id);
-        // console.log("params book" + req.params.id);
         if(user.haveRead[book]._id ==  req.params.id) {
           user.haveRead[book].rating = Number(req.query.rating);
         }
@@ -109,20 +99,18 @@ router.patch('/:id', function(req, res) {
   }
 })
 
-
 router.get('/books', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
-    // console.log('user.haveRead:', user.haveRead);
     res.json(user.haveRead);
   })
 })
 
-router.post('/add-book', function(req, res) {
+router.post('/books/add-book', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
+      // to add new book to beginning of array
       user.haveRead.unshift({
-      // user.haveRead.push({
         volume_id: req.body.book.id,
         smThumbnailUrl: req.body.book.volumeInfo.imageLinks.smallThumbnail,
         title: req.body.book.volumeInfo.title,
@@ -130,7 +118,6 @@ router.post('/add-book', function(req, res) {
         is_favorite: false,
         rating: 0
       });
-      // console.log(user);
       user.save(function(err, user) {
          if(err) return console.log(err);
          res.json(user);
