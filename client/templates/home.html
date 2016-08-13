@@ -3,7 +3,7 @@
 </div>
 
 <div class="container frame">
-  <div id="have-read-display" class="collections display-container">
+  <div id="have-read-display" class="collections display-container hr-fav-displays">
     <table class="bordered highlight centered" ng-init="uc.getBooks()">
     <tbody>
       <tr class="collection-items">
@@ -43,12 +43,12 @@
 </div>
 
 <div class="container display-container">
-    <h4>My Favorites:</h4>
+    <h4>My Favorites (you have {{uc.favorites.length}} favorites):</h4>
 </div>
 
 <div class="container frame">
-  <!-- <div id="favorites-display" class="collections display-container">
-  </div> -->
+  <div id="favorites-display" class="collections display-container hr-fav-displays">
+  </div>
   <img class="frame-img" src="../images/Shelf.png" alt="" />
 </div>
 
@@ -84,3 +84,5 @@
   </tbody>
 </table>
 </div>
+
+<div class="footer"></div>

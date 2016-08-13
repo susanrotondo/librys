@@ -37,6 +37,7 @@ function usersController($http, $state) {
   vm.title = "The Users Controller"
   vm.haveRead = [];
   vm.books = [];
+  vm.favorites = [];
 
   vm.currentPage = 0;
   vm.pageSize = 8;

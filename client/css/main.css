@@ -82,9 +82,9 @@ body {
 }
 
 
-/* -------------- */
-/* BOOKS DISPLAYS */
-/* -------------- */
+/* --------------------- */
+/* SEARCH BOOKS DISPLAYS */
+/* --------------------- */
 .books-list-items {
   list-style-type: none;
 }
@@ -100,15 +100,15 @@ body {
   width: 100%;
 }
 
-/* ------------- */
-/*HAVE READ BOOKS*/
-/* ------------- */
+/* ------------------- */
+/* USER BOOKS DISPLAYS */
+/* ------------------- */
 
 #pager-div {
   padding-left: 38px;
 }
 
-#have-read-display {
+.hr-fav-displays {
   float: left;
   position: absolute;
   left: 74px;
