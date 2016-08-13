@@ -88,6 +88,18 @@ function usersController($http, $state) {
     });
   }
 
+  vm.getFavorites = function() {
+    $http({
+      method: 'GET',
+      url: '/user/books/favorites'
+      }).then(function successCallback(response) {
+        // console.log(response.data)
+        vm.favorites = response.data;
+      }, function errorCallback(error) {
+        console.log(error);
+    });
+  }
+
   vm.findBook = function(title, author) {
     // console.log(!!author);
     vm.error = false;

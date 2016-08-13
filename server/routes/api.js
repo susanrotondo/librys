@@ -99,17 +99,28 @@ router.patch('/books/:id', function(req, res) {
   }
   if(req.query.favorite) {
     User.findById(req.user, function(err, user){
-      console.log('user', user)
       for (book in user.haveRead){
-        if(user.haveRead[book]._id ==  req.params.id) {
-          bookId = user.haveRead[book]._id;
+        console.log('req.params.id:', req.params.id)
+        if(user.haveRead[book]._id == req.params.id) {
+          bookId = req.params.id;
           // console.log('user.haveRead[book].isFavorite before:', user.haveRead[book].isFavorite);
           user.haveRead[book].isFavorite = !user.haveRead[book].isFavorite;
           // console.log('user.haveRead[book].isFavorite after:', user.haveRead[book].isFavorite);
-          user.favorites.unshift({
-            id: bookId
-          });
+          if(user.haveRead[book].isFavorite) {
+            user.favorites.unshift({
+              id: bookId
+            })
+          } else {
+            for(var i = 0; i < user.favorites.length; i++) {
+              if(user.favorites[i].id == bookId) {
+                user.favorites.splice(book, 1);
+                console.log(user.favorites);
+            }
+          }
         }
+      }
+      console.log('finished going through user.favorites for the matched req.params.id')
+      // break;
       }
       user.save(function(err, user) {
          if(err) return console.log(err);
@@ -121,8 +132,17 @@ router.patch('/books/:id', function(req, res) {
 
 router.get('/books', function(req, res) {
   User.findById(req.user._id, function(err, user) {
+    console.log('user', user)
     if(err) return console.log(err);
     res.json(user.haveRead);
+  })
+})
+
+router.get('/books/favorites', function(req, res) {
+  User.findById(req.user._id, function(err, user) {
+    if(err) return console.log(err);
+    //TODO figure out how to pull front cover and title for each from haveRead
+    res.json(user.favorites);
   })
 })
 
