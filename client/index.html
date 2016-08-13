@@ -28,6 +28,8 @@
           </div>
           <div class="nav navbar-nav navbar-brand navbar-right" ng-controller="logoutController as logoutCtrl">
             <h4 id="nav-name-display">{{ main.currentUser.username }}</h4>
+            <a ui-sref="profile" class="btn btn-default navbar-btn" ng-if="'home' | isState">Profile</a>
+            <a ui-sref="home" class="btn btn-default navbar-btn" ng-if="'profile' | isState">Home</a>
             <button type="button" class="btn btn-default navbar-btn" ng-click='logoutCtrl.logout()'>Logout</button>
           </div>
         </div>
