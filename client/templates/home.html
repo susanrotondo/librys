@@ -45,6 +45,20 @@
 
 <div class="container display-container">
     <h4>My Favorites (you have {{uc.favorites.length}} favorites):</h4>
+    <!-- <table class="bordered highlight centered" ng-init="">
+    <tbody>
+      <tr class="collection-items">
+        <td class="sm-padding" ng-repeat="book in uc.haveRead | startFrom: uc.currentPage * uc.pageSize | limitTo: uc.pageSize">
+          <div class="hr-books">
+            <img class="hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
+            <div class="hr-books-title">
+              <p>{{ book.title | limitTo: 28 }}</p>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table> -->
 </div>
 
 <div class="container frame">

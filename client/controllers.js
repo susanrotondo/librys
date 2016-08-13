@@ -53,8 +53,6 @@ function usersController($http, $state) {
   }
 
   vm.addFavorite = function(book) {
-    console.log('adding to favorites')
-    console.log('book._id:', book._id)
     $http.patch('/user/books/' + book._id + '?favorite=true', {params: {book: book}})
     .success(function(data) {
       // console.log('data is:', data)

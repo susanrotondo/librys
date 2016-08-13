@@ -98,13 +98,17 @@ router.patch('/books/:id', function(req, res) {
     })
   }
   if(req.query.favorite) {
-    console.log('got to the router.patch')
     User.findById(req.user, function(err, user){
+      console.log('user', user)
       for (book in user.haveRead){
         if(user.haveRead[book]._id ==  req.params.id) {
+          bookId = user.haveRead[book]._id;
           // console.log('user.haveRead[book].isFavorite before:', user.haveRead[book].isFavorite);
           user.haveRead[book].isFavorite = !user.haveRead[book].isFavorite;
           // console.log('user.haveRead[book].isFavorite after:', user.haveRead[book].isFavorite);
+          user.favorites.unshift({
+            id: bookId
+          });
         }
       }
       user.save(function(err, user) {

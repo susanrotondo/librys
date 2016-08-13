@@ -22,9 +22,7 @@ var
     email: String,
     haveRead: [bookSchema],
     // TODO favorites will be populated from haveRead:
-    favorites: [],
-    // TODO want items cannot be rated
-    want: [bookSchema]
+    favorites: []
   });
 
 // extend functionality of Schema using third party pkg:
