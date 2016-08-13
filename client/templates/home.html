@@ -14,11 +14,11 @@
               <p>{{ book.title | limitTo: 28 }}</p>
             </div>
             <ul class="rating">
-              <li ng-if="uc.stars(book,true,1)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 1)">&#9733;</li>
-              <li ng-if="uc.stars(book,true,2)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 2)">&#9733;</li>
-              <li ng-if="uc.stars(book,true,3)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 3)">&#9733;</li>
-              <li ng-if="uc.stars(book,true,4)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 4)">&#9733;</li>
-              <li ng-if="uc.stars(book,true,5)" style="color:#FFE07C;" ng-click="uc.updateRating(book, 5)">&#9733;</li>
+              <li ng-if="uc.stars(book,true,1)" style="color:#ffcb1f;" ng-click="uc.updateRating(book, 1)">&#9733;</li>
+              <li ng-if="uc.stars(book,true,2)" style="color:#ffcb1f;" ng-click="uc.updateRating(book, 2)">&#9733;</li>
+              <li ng-if="uc.stars(book,true,3)" style="color:#ffcb1f;" ng-click="uc.updateRating(book, 3)">&#9733;</li>
+              <li ng-if="uc.stars(book,true,4)" style="color:#ffcb1f;" ng-click="uc.updateRating(book, 4)">&#9733;</li>
+              <li ng-if="uc.stars(book,true,5)" style="color:#ffcb1f;" ng-click="uc.updateRating(book, 5)">&#9733;</li>
 
               <li ng-if="uc.stars(book,false,1)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 1)">&#9733;</li>
               <li ng-if="uc.stars(book,false,2)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 2)">&#9733;</li>
@@ -40,6 +40,16 @@
   <a ng-disabled="uc.currentPage == 0" ng-click="uc.currentPage = uc.currentPage - 1" class="btn btn-default">Previous</a>
   {{uc.currentPage +1 }}/{{uc.numberOfPages()}} shelves
   <a ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1" class="btn btn-default">Next</a>
+</div>
+
+<div class="container display-container">
+    <h4>My Favorites:</h4>
+</div>
+
+<div class="container frame">
+  <!-- <div id="favorites-display" class="collections display-container">
+  </div> -->
+  <img class="frame-img" src="../images/Shelf.png" alt="" />
 </div>
 
 <div class="container display-container">

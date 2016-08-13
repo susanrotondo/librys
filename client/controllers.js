@@ -42,7 +42,7 @@ function usersController($http, $state) {
   vm.pageSize = 8;
 
   vm.myStyle = {
-    "color" : "#c6bbb4"
+    "color" : "#9c897c"
   }
 
   vm.numberOfPages = function(){
