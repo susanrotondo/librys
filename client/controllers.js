@@ -45,9 +45,21 @@ function usersController($http, $state) {
   vm.myStyle = {
     "color" : "#9c897c"
   }
-
+  //
+  // TODO to page thru favorites also, this function will have to take a
+  // "collection" arg (could be paging thru haveRead OR favorites)
   vm.numberOfPages = function(){
       return Math.ceil(vm.haveRead.length / vm.pageSize);
+  }
+
+  vm.addFavorite = function(book) {
+    console.log('adding to favorites')
+    console.log('book._id:', book._id)
+    $http.patch('/user/books/' + book._id + '?favorite=true', {params: {book: book}})
+    .success(function(data) {
+      // console.log('data is:', data)
+      $state.reload('home')
+    })
   }
 
   vm.stars = function(book, highlighted, num) {

@@ -12,7 +12,7 @@ var
     title: {type: String, required: true},
     // GB api books object, title found: .volumeInfo.authors
     authors: {type: Array, required: true},
-    is_favorite: Boolean,
+    isFavorite: Boolean,
     rating: Number
   }),
 

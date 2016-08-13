@@ -27,6 +27,7 @@
               <li ng-if="uc.stars(book,false,5)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 5)">&#9733;</li>
             </ul>
             <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
+            <a ng-click='uc.addFavorite(book)' class="btn btn-default btn-xs">Favorite</a>
           </div>
         </td>
       </tr>

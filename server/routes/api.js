@@ -97,6 +97,22 @@ router.patch('/books/:id', function(req, res) {
       })
     })
   }
+  if(req.query.favorite) {
+    console.log('got to the router.patch')
+    User.findById(req.user, function(err, user){
+      for (book in user.haveRead){
+        if(user.haveRead[book]._id ==  req.params.id) {
+          // console.log('user.haveRead[book].isFavorite before:', user.haveRead[book].isFavorite);
+          user.haveRead[book].isFavorite = !user.haveRead[book].isFavorite;
+          // console.log('user.haveRead[book].isFavorite after:', user.haveRead[book].isFavorite);
+        }
+      }
+      user.save(function(err, user) {
+         if(err) return console.log(err);
+         res.json(user);
+      })
+    })
+  }
 })
 
 router.get('/books', function(req, res) {
@@ -115,7 +131,7 @@ router.post('/books/add-book', function(req, res) {
         smThumbnailUrl: req.body.book.volumeInfo.imageLinks.smallThumbnail,
         title: req.body.book.volumeInfo.title,
         authors: req.body.book.volumeInfo.authors,
-        is_favorite: false,
+        isFavorite: false,
         rating: 0
       });
       user.save(function(err, user) {
