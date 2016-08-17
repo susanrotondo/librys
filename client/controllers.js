@@ -93,7 +93,7 @@ function usersController($http, $state) {
       method: 'GET',
       url: '/user/books/favorites'
       }).then(function successCallback(response) {
-        // console.log(response.data)
+        // console.log('getFavorites res.data is:', response.data)
         vm.favorites = response.data;
       }, function errorCallback(error) {
         console.log(error);

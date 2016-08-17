@@ -74,8 +74,14 @@ router.patch('/books/:id', function(req, res) {
   if(req.query.delete) {
     User.findById(req.user, function(err, user){
       for (book in user.haveRead){
-        if(user.haveRead[book]._id ==  req.params.id) {
+        if(user.haveRead[book]._id == req.params.id) {
           user.haveRead.splice(book, 1);
+          for(var i = 0; i < user.favorites.length; i++) {
+            if(user.favorites[i].id == req.params.id) {
+              user.favorites.splice(i, 1);
+              console.log('after splicing favorites:', user.favorites)
+            }
+          }
         }
       }
       user.save(function(err, user) {
@@ -100,7 +106,7 @@ router.patch('/books/:id', function(req, res) {
   if(req.query.favorite) {
     User.findById(req.user, function(err, user){
       for (book in user.haveRead){
-        console.log('req.params.id:', req.params.id)
+        // console.log('req.params.id:', req.params.id)
         if(user.haveRead[book]._id == req.params.id) {
           bookId = req.params.id;
           // console.log('user.haveRead[book].isFavorite before:', user.haveRead[book].isFavorite);
@@ -110,13 +116,16 @@ router.patch('/books/:id', function(req, res) {
             user.favorites.unshift({
               id: bookId
             })
+            console.log('just added to favorites:', user.favorites)
+            break;
           } else {
             for(var i = 0; i < user.favorites.length; i++) {
               if(user.favorites[i].id == bookId) {
                 user.favorites.splice(book, 1);
-                console.log(user.favorites);
             }
           }
+          console.log('just removed from favorites:', user.favorites);
+          break;
         }
       }
       console.log('finished going through user.favorites for the matched req.params.id')

@@ -27,7 +27,7 @@
               <li ng-if="uc.stars(book,false,5)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 5)">&#9733;</li>
             </ul>
             <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
-            <!-- <a ng-click='uc.addFavorite(book)' class="btn btn-default btn-xs">Favorite</a> -->
+            <a ng-click='uc.addFavorite(book)' class="btn btn-default btn-xs">Favorite</a>
           </div>
         </td>
       </tr>
@@ -43,19 +43,29 @@
   <a ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1" class="btn btn-default">Next</a>
 </div> <!-- END have-read-display pagination -->
 
-<!-- <div class="container display-container">
+<div class="container display-container">
     <h4>My Favorites (you have {{uc.favorites.length}} favorites):</h4>
     <table class="bordered highlight centered" ng-init="uc.getFavorites()">
     <tbody>
+      <tr class="collection-items">
+        <!-- <td class="sm-padding" ng-repeat="book in uc.favorites | startFrom: uc.currentPage * uc.pageSize | limitTo: uc.pageSize">
+          <div class="hr-books">
+            <img class="hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
+            <div class="hr-books-title">
+              <p>{{ book.title | limitTo: 28 }}</p>
+            </div>
+          </div>
+        </td> -->
+      </tr>
     </tbody>
   </table>
-</div> -->
+</div>
 
-<!-- <div class="container frame">
+<div class="container frame">
   <div id="favorites-display" class="collections display-container hr-fav-displays">
   </div>
   <img class="frame-img" src="../images/Shelf.png" alt="" />
-</div> -->
+</div>
 
 <div class="container display-container">
   <form name="form.search" class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(titleSearch, authorSearch)">

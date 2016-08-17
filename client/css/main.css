@@ -168,6 +168,10 @@ ul.rating {
   cursor: pointer;
 }
 
+.footer {
+  height: 200px;
+}
+
 /* ----------------------- */
 /* HELPER STYLING:         */
 /* ----------------------- */
