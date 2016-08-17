@@ -70,6 +70,7 @@ router.get('/status', function(req, res) {
 
 // removing the book as patch req because not deleting Book;
 // removing book from User collection
+// needs to also check favorites and if favorite, remove also
 router.patch('/books/:id', function(req, res) {
   if(req.query.delete) {
     User.findById(req.user, function(err, user){
@@ -79,7 +80,6 @@ router.patch('/books/:id', function(req, res) {
           for(var i = 0; i < user.favorites.length; i++) {
             if(user.favorites[i].id == req.params.id) {
               user.favorites.splice(i, 1);
-              console.log('after splicing favorites:', user.favorites)
             }
           }
         }
@@ -126,10 +126,8 @@ router.patch('/books/:id', function(req, res) {
           }
           console.log('just removed from favorites:', user.favorites);
           break;
+          }
         }
-      }
-      console.log('finished going through user.favorites for the matched req.params.id')
-      // break;
       }
       user.save(function(err, user) {
          if(err) return console.log(err);
@@ -150,7 +148,7 @@ router.get('/books', function(req, res) {
 router.get('/books/favorites', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
-    //TODO figure out how to pull front cover and title for each from haveRead
+    console.log('in api.js, user.favorites is:', user.favorites)
     res.json(user.favorites);
   })
 })

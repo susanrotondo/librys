@@ -94,7 +94,18 @@ function usersController($http, $state) {
       url: '/user/books/favorites'
       }).then(function successCallback(response) {
         // console.log('getFavorites res.data is:', response.data)
-        vm.favorites = response.data;
+        response.data.forEach(function(el) {
+          for(var i = 0; i < vm.haveRead.length; i++) {
+            if(el.id == vm.haveRead[i]._id) {
+              vm.favorites.push({
+                smThumbnailUrl: vm.haveRead[i].smThumbnailUrl,
+                title: vm.haveRead[i].title
+              })
+            }
+          }
+        });
+        // vm.favorites = response.data;
+        console.log('vm.favorites is:', vm.favorites)
       }, function errorCallback(error) {
         console.log(error);
     });
