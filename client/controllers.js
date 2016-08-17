@@ -35,8 +35,10 @@ function usersController($http, $state) {
   console.log('Instantiated usersController');
   var vm = this;
   vm.title = "The Users Controller"
-  vm.haveRead = [];
+  // this is the list response from Google Books API book search query
   vm.books = [];
+
+  vm.haveRead = [];
   vm.favorites = [];
 
   vm.currentPage = 0;
@@ -52,10 +54,9 @@ function usersController($http, $state) {
       return Math.ceil(vm.haveRead.length / vm.pageSize);
   }
 
-  vm.addFavorite = function(book) {
+  vm.toggleFavorite = function(book) {
     $http.patch('/user/books/' + book._id + '?favorite=true', {params: {book: book}})
     .success(function(data) {
-      // console.log('data is:', data)
       $state.reload('home')
     })
   }
@@ -93,19 +94,7 @@ function usersController($http, $state) {
       method: 'GET',
       url: '/user/books/favorites'
       }).then(function successCallback(response) {
-        // console.log('getFavorites res.data is:', response.data)
-        response.data.forEach(function(el) {
-          for(var i = 0; i < vm.haveRead.length; i++) {
-            if(el.id == vm.haveRead[i]._id) {
-              vm.favorites.push({
-                smThumbnailUrl: vm.haveRead[i].smThumbnailUrl,
-                title: vm.haveRead[i].title
-              })
-            }
-          }
-        });
-        // vm.favorites = response.data;
-        console.log('vm.favorites is:', vm.favorites)
+        vm.favorites = response.data;
       }, function errorCallback(error) {
         console.log(error);
     });

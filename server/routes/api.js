@@ -78,7 +78,7 @@ router.patch('/books/:id', function(req, res) {
         if(user.haveRead[book]._id == req.params.id) {
           user.haveRead.splice(book, 1);
           for(var i = 0; i < user.favorites.length; i++) {
-            if(user.favorites[i].id == req.params.id) {
+            if(user.favorites[i]._id == req.params.id) {
               user.favorites.splice(i, 1);
             }
           }
@@ -103,29 +103,24 @@ router.patch('/books/:id', function(req, res) {
       })
     })
   }
+  // TODO replicating haveRead into favorites seems undesirable
+  // need to refactor later if possible
   if(req.query.favorite) {
     User.findById(req.user, function(err, user){
       for (book in user.haveRead){
         // console.log('req.params.id:', req.params.id)
         if(user.haveRead[book]._id == req.params.id) {
-          bookId = req.params.id;
-          // console.log('user.haveRead[book].isFavorite before:', user.haveRead[book].isFavorite);
           user.haveRead[book].isFavorite = !user.haveRead[book].isFavorite;
-          // console.log('user.haveRead[book].isFavorite after:', user.haveRead[book].isFavorite);
           if(user.haveRead[book].isFavorite) {
-            user.favorites.unshift({
-              id: bookId
-            })
+            user.favorites.unshift(user.haveRead[book])
             console.log('just added to favorites:', user.favorites)
             break;
           } else {
             for(var i = 0; i < user.favorites.length; i++) {
-              if(user.favorites[i].id == bookId) {
-                user.favorites.splice(book, 1);
+              if(user.favorites[i]._id == req.params.id) {
+                user.favorites.splice(i, 1);
+              }
             }
-          }
-          console.log('just removed from favorites:', user.favorites);
-          break;
           }
         }
       }
@@ -148,7 +143,6 @@ router.get('/books', function(req, res) {
 router.get('/books/favorites', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
-    console.log('in api.js, user.favorites is:', user.favorites)
     res.json(user.favorites);
   })
 })

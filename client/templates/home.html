@@ -27,7 +27,7 @@
               <li ng-if="uc.stars(book,false,5)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 5)">&#9733;</li>
             </ul>
             <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
-            <a ng-click='uc.addFavorite(book)' class="btn btn-default btn-xs">Favorite</a>
+            <a ng-click='uc.toggleFavorite(book)' class="btn btn-default btn-xs">Favorite</a>
           </div>
         </td>
       </tr>
@@ -73,12 +73,10 @@
     <div class="form-group">
       <label for="title">Title</label>
       <input name="titleSearch" type="text" class="form-control" placeholder="i.e., Great Expectations" ng-model="titleSearch">
-      <!-- <span ng-show="myForm.titleSearch.$invalid">title is required</span> -->
     </div>
     <div class="form-group">
       <label for="author">Author</label>
       <input name="authorSearch" type="text" class="form-control" placeholder="i.e., Charles Dickens" ng-model="authorSearch">
-      <!-- <span ng-show="myForm.authorSearch.$invalid">author is required</span> -->
     </div>
     <button type="submit" class="btn btn-default">Search</button>
   </form>
@@ -93,7 +91,7 @@
       <td>{{ book.volumeInfo.title | limitTo: 80 }}</td>
       <td>{{ book.volumeInfo.authors[0] }}</td>
       <td>
-          <a ng-click='uc.addBook(book)' class="btn btn-default">Add to Have Read</a>
+          <a ng-click='uc.addBook(book)' class="btn btn-default">Have Read</a>
       </td>
     </tr>
   </tbody>
