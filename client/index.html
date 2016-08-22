@@ -14,7 +14,7 @@
     <!-- Source in angular-ui-bootstrap: -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.js"></script>
     <!-- Angular UI Bootstrap requires Bootstrap CSS version 3.x or higher  -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel='stylesheet' type="text/css" href="css/main.css">
     <link rel="icon" href="./images/sm_book_icon_celadon.png">
   </head>
@@ -28,8 +28,12 @@
           </div>
           <div class="nav navbar-nav navbar-brand navbar-right" ng-controller="logoutController as logoutCtrl">
             <h4 id="nav-name-display">{{ main.currentUser.username }}</h4>
-            <a ui-sref="profile" class="btn btn-default navbar-btn" ng-if="'home' | isState">Profile</a>
-            <a ui-sref="home" class="btn btn-default navbar-btn" ng-if="'profile' | isState">Home</a>
+            <a ui-sref="profile" class="btn btn-default navbar-btn btn-icons" title="User Profile" ng-if="'home' | isState">
+              <span class="glyphicon glyphicon-user" aria-hidden="true" aria-label="user-profile"></span>
+            </a>
+            <a ui-sref="home" class="btn btn-default navbar-btn" title="Home" ng-if="'profile' | isState">
+              <span class="glyphicon glyphicon-home" aria-hidden="true" aria-label="user-profile"></span>
+            </a>
             <button type="button" class="btn btn-default navbar-btn" ng-click='logoutCtrl.logout()'>Logout</button>
           </div>
         </div>

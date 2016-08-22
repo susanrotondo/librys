@@ -68,6 +68,10 @@ body {
   padding-right: 6px;
   color: #090e0e;
 }
+
+.btn-icons {
+  color: #090e0e;
+}
 /* ------------------- */
 /* END Nav bar styling */
 /* ------------------- */
@@ -143,7 +147,7 @@ body {
 
 .hr-books-title p {
   font-size: 12px;
-  padding: none;
+  padding: 0;
   margin: 0;
 }
 
