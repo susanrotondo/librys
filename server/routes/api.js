@@ -113,7 +113,7 @@ router.patch('/books/:id', function(req, res) {
           user.haveRead[book].isFavorite = !user.haveRead[book].isFavorite;
           if(user.haveRead[book].isFavorite) {
             user.favorites.unshift(user.haveRead[book])
-            console.log('just added to favorites:', user.favorites)
+            // console.log('just added to favorites:', user.favorites)
             break;
           } else {
             for(var i = 0; i < user.favorites.length; i++) {
@@ -134,7 +134,7 @@ router.patch('/books/:id', function(req, res) {
 
 router.get('/books', function(req, res) {
   User.findById(req.user._id, function(err, user) {
-    console.log('user', user)
+    // console.log('user', user)
     if(err) return console.log(err);
     res.json(user.haveRead);
   })

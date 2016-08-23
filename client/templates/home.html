@@ -44,9 +44,9 @@
   <img class="frame-img" src="../images/Shelf.png" alt="" />
 </div>
 <!-- have-read-display pagination -->
-<div class="container display-container" id="pager-div">
+<div class="container display-container" class="pager-div">
   <a ng-disabled="uc.currentPage == 0" ng-click="uc.currentPage = uc.currentPage - 1" class="btn btn-default">Previous</a>
-  {{uc.currentPage +1 }}/{{uc.numberOfPages()}} shelves
+  {{uc.currentPage +1 }}/{{uc.numberOfPages('haveRead', uc.pageSize)}} shelves
   <a ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1" class="btn btn-default">Next</a>
 </div> <!-- END have-read-display pagination -->
 
@@ -59,7 +59,7 @@
     <table class="bordered highlight centered" ng-init="uc.getFavorites()">
     <tbody>
       <tr class="collection-items">
-        <td class="sm-padding" ng-repeat="book in uc.favorites">
+        <td class="sm-padding" ng-repeat="book in uc.favorites | startFrom: uc.currentFavPage * uc.favPageSize | limitTo: uc.favPageSize">
           <div class="hr-books">
             <!-- <a href="#"> -->
               <span class="align-helper"></span>
@@ -73,6 +73,12 @@
   </div>
   <img class="frame-img" src="../images/Shelf.png" alt="" />
 </div>
+<!-- favorites-display pagination -->
+<div class="container display-container" class="pager-div">
+  <a ng-disabled="uc.currentFavPage == 0" ng-click="uc.currentFavPage = uc.currentFavPage - 1" class="btn btn-default">Previous</a>
+  {{uc.currentFavPage +1 }}/{{uc.numberOfPages('favorites', uc.favPageSize)}} shelves
+  <a ng-disabled="uc.currentFavPage >= uc.favorites.length/uc.favPageSize - 1" ng-click="uc.currentFavPage = uc.currentFavPage + 1" class="btn btn-default">Next</a>
+</div> <!-- END favorites-display pagination -->
 
 <div class="container display-container">
   <form name="form.search" class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(uc.searchForm.titleSearch, uc.searchForm.authorSearch)">

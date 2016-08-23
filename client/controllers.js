@@ -41,17 +41,25 @@ function usersController($http, $state) {
   vm.haveRead = [];
   vm.favorites = [];
 
+  // for pagination:
   vm.currentPage = 0;
   vm.pageSize = 8;
+
+  vm.currentFavPage = 0;
+  vm.favPageSize = 12;
+  // end pagination variables
 
   vm.myStyle = {
     "color" : "#9c897c"
   }
-  //
-  // TODO to page thru favorites also, this function will have to take a
-  // "collection" arg (could be paging thru haveRead OR favorites)
-  vm.numberOfPages = function(){
-      return Math.ceil(vm.haveRead.length / vm.pageSize);
+
+  //for pagination:
+  vm.numberOfPages = function(collection, numBooks){
+    if(collection == 'haveRead') {
+      return Math.ceil(vm.haveRead.length / numBooks);
+    } else {
+      return Math.ceil(vm.favorites.length / numBooks);
+    }
   }
 
   vm.toggleFavorite = function(book) {
@@ -118,7 +126,7 @@ function usersController($http, $state) {
           // vm.errorMessage = "No books were found! Try again!";
         } else {
           vm.books = response.data.items;
-          console.log('vm.books:', vm.books);
+          // console.log('vm.books:', vm.books);
           vm.searchForm = {};
         }
       }, function errorCallback(error) {
