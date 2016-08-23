@@ -26,8 +26,10 @@
               <li ng-if="uc.stars(book,false,4)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 4)">&#9733;</li>
               <li ng-if="uc.stars(book,false,5)" ng-style="uc.myStyle" ng-click="uc.updateRating(book, 5)">&#9733;</li>
             </ul>
-            <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
-            <a ng-click='uc.toggleFavorite(book)' class="btn btn-default btn-xs">Favorite</a>
+            <a ng-click='uc.removeBook(book)' title="Delete" class="btn btn-default btn-xs">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" aria-label="delete-book"></span>
+            </a>
+            <!-- <a ng-click='uc.toggleFavorite(book)' class="btn btn-default btn-xs">Favorite</a> -->
             <!-- <a class="btn btn-default btn-sm btn-icons view-icon" title="View Book">
               <span class="glyphicon glyphicon-pencil" aria-hidden="true" aria-label="view-book"></span>
             </a> -->
@@ -46,11 +48,11 @@
   <a ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1" class="btn btn-default">Next</a>
 </div> <!-- END have-read-display pagination -->
 
-<div class="container display-container">
+<!-- <div class="container display-container">
     <h4>My Favorites (you have {{uc.favorites.length}} favorites):</h4>
-</div>
+</div> -->
 
-<div class="container frame">
+<!-- <div class="container frame">
   <div id="favorites-display" class="collections display-container hr-fav-displays">
     <table class="bordered highlight centered" ng-init="uc.getFavorites()">
     <tbody>
@@ -68,7 +70,7 @@
   </table>
   </div>
   <img class="frame-img" src="../images/Shelf.png" alt="" />
-</div>
+</div> -->
 
 <div class="container display-container">
   <form name="form.search" class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(titleSearch, authorSearch)">
