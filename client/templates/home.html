@@ -28,6 +28,9 @@
             </ul>
             <a ng-click='uc.removeBook(book)' class="btn btn-default btn-xs">Delete</a>
             <a ng-click='uc.toggleFavorite(book)' class="btn btn-default btn-xs">Favorite</a>
+            <!-- <a class="btn btn-default btn-sm btn-icons view-icon" title="View Book">
+              <span class="glyphicon glyphicon-pencil" aria-hidden="true" aria-label="view-book"></span>
+            </a> -->
           </div>
         </td>
       </tr>
@@ -52,10 +55,11 @@
     <table class="bordered highlight centered" ng-init="uc.getFavorites()">
     <tbody>
       <tr class="collection-items">
-        <td class="sm-padding" ng-repeat="book in uc.favorites">
+        <td ng-repeat="book in uc.favorites">
           <div class="hr-books">
             <a href="#">
-              <img class="hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
+              <span class="align-helper"></span>
+              <img class="fav-book-front hr-book-front" ng-src="{{book.smThumbnailUrl}}" alt="front cover" />
             </a>
           </div>
         </td>

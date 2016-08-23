@@ -140,6 +140,10 @@ body {
   height: 180px;
 }
 
+.hr-books a {
+  text-decoration: none;
+}
+
 .hr-books-title {
   height: 40px;
   word-wrap: normal;
@@ -151,6 +155,16 @@ body {
   margin: 0;
 }
 
+.fav-book-front {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.align-helper {
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
 /* ----------------------- */
 /* STAR RATING:         */
 /* ----------------------- */

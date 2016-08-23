@@ -28,7 +28,7 @@
           </div>
           <div class="nav navbar-nav navbar-brand navbar-right" ng-controller="logoutController as logoutCtrl">
             <h4 id="nav-name-display">{{ main.currentUser.username }}</h4>
-            <a ui-sref="profile" class="btn btn-default navbar-btn btn-icons" title="User Profile" ng-if="'home' | isState">
+            <a ui-sref="profile" class="btn btn-default navbar-btn btn-icons" title="Profile" ng-if="'home' | isState">
               <span class="glyphicon glyphicon-user" aria-hidden="true" aria-label="user-profile"></span>
             </a>
             <a ui-sref="home" class="btn btn-default navbar-btn" title="Home" ng-if="'profile' | isState">
