@@ -99,12 +99,9 @@ body {
   padding: 8px;
 }
 
-/* --------------------- */
-/* SEARCH BOOKS DISPLAYS */
-/* --------------------- */
-/*.books-list-items {
-  list-style-type: none;
-}*/
+/* -------------------------- */
+/* END SEARCH RESULTS DISPLAY */
+/* -------------------------- */
 
 .collections {
   margin-top: 8px;
