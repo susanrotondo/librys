@@ -73,15 +73,15 @@
 </div> -->
 
 <div class="container display-container">
-  <form name="form.search" class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(titleSearch, authorSearch)">
+  <form name="form.search" class="form-inline" id ="search-form" method="GET" ng-submit="uc.findBook(uc.searchForm.titleSearch, uc.searchForm.authorSearch)">
     <h4>Search for Books To Add to Your Bookshelf:</h4>
     <div class="form-group">
       <label for="title">Title</label>
-      <input name="titleSearch" type="text" class="form-control" placeholder="i.e., Great Expectations" ng-model="titleSearch">
+      <input name="titleSearch" type="text" class="form-control" placeholder="i.e., Great Expectations" ng-model="uc.searchForm.titleSearch">
     </div>
     <div class="form-group">
       <label for="author">Author</label>
-      <input name="authorSearch" type="text" class="form-control" placeholder="i.e., Charles Dickens" ng-model="authorSearch">
+      <input name="authorSearch" type="text" class="form-control" placeholder="i.e., Charles Dickens" ng-model="uc.searchForm.authorSearch">
     </div>
     <button type="submit" class="btn btn-default">Search</button>
   </form>

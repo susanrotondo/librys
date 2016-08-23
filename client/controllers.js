@@ -119,9 +119,11 @@ function usersController($http, $state) {
         } else {
           vm.books = response.data.items;
           console.log('vm.books:', vm.books);
+          vm.searchForm = {};
         }
       }, function errorCallback(error) {
         console.log(error);
+        vm.searchForm = {};
     });
   }
 
