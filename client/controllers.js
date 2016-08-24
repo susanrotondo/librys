@@ -127,12 +127,18 @@ function usersController($http, $state) {
         } else {
           vm.books = response.data.items;
           // console.log('vm.books:', vm.books);
-          vm.searchForm = {};
         }
       }, function errorCallback(error) {
         console.log(error);
-        vm.searchForm = {};
     });
+  }
+
+  vm.clearForm = function(formName) {
+    if(formName == 'title') {
+      vm.searchForm.titleSearch = '';
+    } else {
+      vm.searchForm.authorSearch = '';
+    }
   }
 
   vm.addBook = function(book) {
