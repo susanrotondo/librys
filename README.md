@@ -46,17 +46,18 @@ Or you to install the app, fork the GitHub [repository](https://github.com/susan
 <img src="client/images/search_wireframe.png"/>
 
 #### Future Implementations:
-* Clicking on a book on either the Bookshelf or Favorites shelf will go to a view of that book with details about the book. The favoriting and deleting actions will be moved to this view.
-* A user should be able to search through their Bookshelf by text not just by paging through and viewing.
 * A user can search for and view the favorites lists of other users to find other books they might be interested in reading.
 * A user can add books found by search to their "Want to Read" list. These books can be moved from "Want" to their Bookshelf ("Have Read") as appropriate.
 
 
 #### Known Issues:
+* Need to move Delete and Favorite/Unfavorite functionality, along with title info to book details view of some sort. Author and other info can also be put there. Bookshelf on home page should only show book front and star rating.
+* Clicking on book front in "Favorites" should also take user to book detail view.
 * After changing rating for any book, state is reloaded, meaning that even if user had been on "page 4" of bookshelf, view will immediately switch to "page 1".
 * Pagination errors: even when previous and next buttons are disabled, they still increment/de-increment shelf numbers AND empty shelf initializes to "0/1 shelves"
 * Should search results remain after book has been marked as read? (instead of clearing)
 * Add clear search to clear both search input fields
+* A user should be able to search through their Bookshelf by text not just by paging through and viewing.
 * On log in failure, focus should move from password to username field
 * Star rating functionality needs to be refactored. Possibly via a custom directive.
 * Some of the routes need to be adjusted to be RESTful.
