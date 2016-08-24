@@ -150,10 +150,15 @@ router.get('/books/favorites', function(req, res) {
 router.post('/books/add-book', function(req, res) {
   User.findById(req.user._id, function(err, user) {
     if(err) return console.log(err);
+      if(req.body.book.volumeInfo.imageLinks) {
+        var imgUrl = req.body.book.volumeInfo.imageLinks.smallThumbnail;
+      } else {
+        imgUrl = '../images/no_image.png';
+      }
       // to add new book to beginning of array
       user.haveRead.unshift({
         volume_id: req.body.book.id,
-        smThumbnailUrl: req.body.book.volumeInfo.imageLinks.smallThumbnail,
+        smThumbnailUrl: imgUrl,
         title: req.body.book.volumeInfo.title,
         authors: req.body.book.volumeInfo.authors,
         isFavorite: false,
