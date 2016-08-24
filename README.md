@@ -18,6 +18,8 @@ Or you to install the app, fork the GitHub [repository](https://github.com/susan
 * In your local app directory, use npm install to install app dependencies specified in package.json
 * Connect your local app to a local (MongoDB) or remote (mLab) database of your own
 
+#### Project's [Trello Board](https://trello.com/b/dWFTB4wy)
+
 ## Technologies:
 * JavaScript
 * Node.js
@@ -49,8 +51,13 @@ Or you to install the app, fork the GitHub [repository](https://github.com/susan
 * A user can search for and view the favorites lists of other users to find other books they might be interested in reading.
 * A user can add books found by search to their "Want to Read" list. These books can be moved from "Want" to their Bookshelf ("Have Read") as appropriate.
 
+
 #### Known Issues:
 * After changing rating for any book, state is reloaded, meaning that even if user had been on "page 4" of bookshelf, view will immediately switch to "page 1".
+* Pagination errors: even when previous and next buttons are disabled, they still increment/de-increment shelf numbers AND empty shelf initializes to "0/1 shelves"
+* Should search results remain after book has been marked as read? (instead of clearing)
+* Add clear search to clear both search input fields
+* On log in failure, focus should move from password to username field
 * Star rating functionality needs to be refactored. Possibly via a custom directive.
 * Some of the routes need to be adjusted to be RESTful.
 * Full CRUD has not been implemented on User (no account edit or delete).
