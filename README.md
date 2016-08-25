@@ -51,6 +51,7 @@ Or you to install the app, fork the GitHub [repository](https://github.com/susan
 
 
 #### Known Issues:
+* Design is not responsive. Original intention was for web only, but should be reasonably useable on mobile.
 * Need to move Delete and Favorite/Unfavorite functionality, along with title info to book details view of some sort. Author and other info can also be put there. Bookshelf on home page should only show book front and star rating.
 * Clicking on book front in "Favorites" should also take user to book detail view.
 * After changing rating for any book, state is reloaded, meaning that even if user had been on "page 4" of bookshelf, view will immediately switch to "page 1".
