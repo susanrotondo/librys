@@ -54,9 +54,15 @@ function usersController($http, $state) {
   }
 
   //for pagination:
+  // NOTE else clause is for favorites shelf pagination
+  // may need to be removed if separate fav shelf not re-added
   vm.numberOfPages = function(collection, numBooks){
     if(collection == 'haveRead') {
-      return Math.ceil(vm.haveRead.length / numBooks);
+      if(vm.haveRead.length == 0) {
+        return 0;
+      } else {
+        return Math.ceil(vm.haveRead.length / numBooks);
+      }
     } else {
       return Math.ceil(vm.favorites.length / numBooks);
     }
@@ -97,16 +103,16 @@ function usersController($http, $state) {
     });
   }
 
-  vm.getFavorites = function() {
-    $http({
-      method: 'GET',
-      url: '/user/books/favorites'
-      }).then(function successCallback(response) {
-        vm.favorites = response.data;
-      }, function errorCallback(error) {
-        console.log(error);
-    });
-  }
+  // vm.getFavorites = function() {
+  //   $http({
+  //     method: 'GET',
+  //     url: '/user/books/favorites'
+  //     }).then(function successCallback(response) {
+  //       vm.favorites = response.data;
+  //     }, function errorCallback(error) {
+  //       console.log(error);
+  //   });
+  // }
 
   vm.findBook = function(title, author) {
     // console.log(!!author);
