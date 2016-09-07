@@ -1,6 +1,5 @@
 <div class="container display-container">
     <h4>My Bookshelf (you have {{uc.haveRead.length}} books on your shelf)</h4>
-    <p>Add or remove favorites from here!</p>
 </div>
 
 <div class="container frame">
@@ -46,7 +45,7 @@
 <!-- have-read-display pagination -->
 <div class="container display-container" class="pager-div">
   <button ng-disabled="uc.currentPage == 0" ng-click="uc.currentPage = uc.currentPage - 1" class="btn btn-default">Previous</button>
-  {{uc.currentPage + 1}}/{{uc.numberOfPages('haveRead', uc.pageSize)}} shelves
+  {{uc.haveRead.length == 0 ? 0 : uc.currentPage + 1}}/{{uc.numberOfPages('haveRead', uc.pageSize)}} shelves
   <button ng-disabled="uc.currentPage >= uc.haveRead.length/uc.pageSize - 1" ng-click="uc.currentPage = uc.currentPage + 1" class="btn btn-default">Next</button>
 </div>
 <!-- END have-read-display pagination -->
