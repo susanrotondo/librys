@@ -56,7 +56,6 @@ Or you to install the app, fork the GitHub [repository](https://github.com/susan
 * Need to move Delete and Favorite/Unfavorite functionality, along with title info to book details view of some sort. Author and other info can also be put there. Bookshelf on home page should only show book front and star rating.
 * Once favorites display implemented, clicking on book front in "Favorites" should also take user to book detail view.
 * After changing rating for any book, state is reloaded, meaning that even if user had been on "page 4" of bookshelf, view will immediately switch to "page 1".
-* Pagination error: empty bookshelf initializes to "0/1 shelves"
 * Should search results remain after book has been marked as read? (instead of clearing)
 * Add clear search to clear both search input fields
 * A user should be able to search through their Bookshelf by text not just by paging through and viewing.
