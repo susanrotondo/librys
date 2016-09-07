@@ -74,6 +74,7 @@
 </div> -->
 <!-- favorites-display pagination -->
 <!-- <div class="container display-container" class="pager-div">
+  // TODO will need to change to button tag like above if re-instating separate favorites shelf
   <a ng-disabled="uc.currentFavPage == 0" ng-click="uc.currentFavPage = uc.currentFavPage - 1" class="btn btn-default">Previous</a>
   {{uc.currentFavPage +1 }}/{{uc.numberOfPages('favorites', uc.favPageSize)}} shelves
   <a ng-disabled="uc.currentFavPage >= uc.favorites.length/uc.favPageSize - 1" ng-click="uc.currentFavPage = uc.currentFavPage + 1" class="btn btn-default">Next</a>
